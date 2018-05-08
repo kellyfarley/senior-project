@@ -1,0 +1,30 @@
+#title {
+  font-family: garamond;
+  font-size: 40px;
+  color: white;
+  background-color: #0066ff;
+  margin-left: 0px;
+  margin-right: 600px;
+  border: 10px solid #003d99;
+  padding: 20px;
+}
+
+p {
+  font-family: garamond;
+  font-size: 15px;
+  color: #003d99;
+}
+
+h2 {
+  font-family: garamond;
+  font-size: 20px;
+  color: #003d99;
+}
+
+body {
+  background-color: #e6f0ff;
+}
+
+.red {
+  color: red;
+}
