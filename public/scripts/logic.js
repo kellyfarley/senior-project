@@ -40,7 +40,7 @@ function checkInput(){
 // maybe look into set interval
 
 // take the input
-var text = "Hello. She says her name is Kelly. She really hope her good stuff begins to work.";
+var text = "Hello. She says her name is Kelly. She like really hope her stuff just begins to work.";
 
 // word count
 var textArray = text.split(" ");
@@ -80,16 +80,6 @@ for (i=0; i<textArray.length; i++) {
   }
 }
 
-// overused words
-for (i=0; i<textArray.length; i++) {
-	var weakWords = ["good", "like", "just", "evilness", "there", "large", "like"];
-	for (x=0; x<weakWords.length; x++) {
-  	 if (textArray[i] == weakWords[x]) {
-    	textArray[i]= '<span class="green">'+textArray[i]+'</span>';
-  	}
-  }
-}
-
 // vague nouns
 for (i=0; i<textArray.length; i++) {
 	var weakNouns = ["stuff", "thing", "things", "everyone", "everybody"];
@@ -99,6 +89,53 @@ for (i=0; i<textArray.length; i++) {
   	}
   }
 }
+
+// overused words (WHY IS THIS BEING PURPLE)
+for (i=0; i<textArray.length; i++) {
+	var weakWords = ["good", "like", "just", "evilness", "there", "large", "like"];
+	for (x=0; x<weakWords.length; x++) {
+  	 if (textArray[i] == weakWords[x]) {
+    	textArray[i]= '<span class="green">'+textArray[i]+'</span>';
+  	}
+  }
+}
+// replace "like" with "such as"?
+
+// passive voice (WHY IS THIS BEING PURPLE)
+for (i=0; i<textArray.length; i++) {
+	var passiveVoice = ["is", "am", "are"];
+	for (x=0; x<passiveVoice.length; x++) {
+  	 if (textArray[i] == passiveVoice[x]) {
+    	textArray[i]= '<span class="orange">'+textArray[i]+'</span>';
+  	}
+  }
+}
+
+// naked this
+
+// 2nd person
+
+// first person
+
+// adverbs
+
+// past tense
+
+// page
+
+// author's name
+
+// transitions
+
+// pretentions
+
+// weak quote intro
+
+// bad phrases
+
+// numbers
+
+// contractions
 
 $('h3').html(textArray.join(" "));
 
