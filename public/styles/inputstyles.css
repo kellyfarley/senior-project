@@ -25,6 +25,14 @@ body {
   background-color: #e6f0ff;
 }
 
-.red {
+.purple{
+  color: purple;
+}
+
+.red{
   color: red;
+}
+
+.green{
+  color: green;
 }
