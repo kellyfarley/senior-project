@@ -3,7 +3,6 @@ require 'sinatra'
 get '/input' do
 	erb :input
 end
-
 =begin
 get '/input/result' do
 	@text = "Hello. My name is Kelly. I really hope my code works."

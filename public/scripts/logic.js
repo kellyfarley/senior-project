@@ -40,7 +40,7 @@ function checkInput(){
 // maybe look into set interval
 
 // take the input
-var text = "Hello. She says her name is Kelly. She like really hope her stuff just begins to work.";
+var text = "Hello. She says her name is Kelly. She like really hope her this stuff just begins to work.";
 
 // word count
 var textArray = text.split(" ");
@@ -111,7 +111,12 @@ for (i=0; i<textArray.length; i++) {
   }
 }
 
-// naked this
+// naked this (WHY IS THIS BEING PURPLE)
+for (i=0; i<textArray.length; i++) {
+	if (textArray[i] == "this") {
+    	textArray[i]= '<span class="yellow">'+textArray[i]+'</span>';
+  	}
+}
 
 // 2nd person
 
@@ -127,15 +132,21 @@ for (i=0; i<textArray.length; i++) {
 
 // transitions
 
-// pretentions
+// pretentious
+
+// FIND PHRASES
 
 // weak quote intro
 
 // bad phrases
 
+// FIND AND REPLACE
+
 // numbers
 
 // contractions
+
+// wrong words
 
 $('h3').html(textArray.join(" "));
 
