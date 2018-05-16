@@ -40,7 +40,8 @@ function checkInput(){
 // maybe look into set interval
 
 // take the input
-var text = "Hello. She says her name is Kelly. She like really hope her this stuff just begins to work.";
+//var text = <%@userInput%>
+var text = "you'll be back soon you'll see it's all page however page good I swear isn't it lovely very lovely"
 
 // word count
 var textArray = text.split(" ");
@@ -101,7 +102,7 @@ for (i=0; i<textArray.length; i++) {
 }
 // replace "like" with "such as"?
 
-// passive voice (WHY IS THIS BEING PURPLE)
+// passive voice
 for (i=0; i<textArray.length; i++) {
 	var passiveVoice = ["is", "am", "are"];
 	for (x=0; x<passiveVoice.length; x++) {
@@ -111,7 +112,7 @@ for (i=0; i<textArray.length; i++) {
   }
 }
 
-// naked this (WHY IS THIS BEING PURPLE)
+// naked this
 for (i=0; i<textArray.length; i++) {
 	if (textArray[i] == "this") {
     	textArray[i]= '<span class="yellow">'+textArray[i]+'</span>';
@@ -119,20 +120,69 @@ for (i=0; i<textArray.length; i++) {
 }
 
 // 2nd person
+for (i=0; i<textArray.length; i++) {
+	var secondPerson = ["you", "you're", "you'll", "you'd"];
+	for (x=0; x<secondPerson.length; x++) {
+  	 if (textArray[i] == secondPerson[x]) {
+    	textArray[i]= '<span class="orange">'+textArray[i]+'</span>';
+  	}
+  }
+}
 
 // first person
+for (i=0; i<textArray.length; i++) {
+	var firstPerson = ["I", "me", "we", "our", "I'm", "I'll", "I'd", "we're", "we'd", "we'll"];
+	for (x=0; x<firstPerson.length; x++) {
+  	 if (textArray[i] == firstPerson[x]) {
+    	textArray[i]= '<span class="orange">'+textArray[i]+'</span>';
+  	}
+  }
+}
 
 // adverbs
+for (i=0; i<textArray.length; i++) {
+	var adverbs = ["carefully", "very", "happily", "quickly", "really", "finally", "seriously", "always", "badly", "exactly", "basically", "actually", "literally", "clearly", "totally", "obviously", "truly", "constantly","specifically"];
+	for (x=0; x<adverbs.length; x++) {
+  	 if (textArray[i] == adverbs[x]) {
+    	textArray[i]= '<span class="orange">'+textArray[i]+'</span>';
+  	}
+  }
+}
 
-// past tense
+// past tense - check for words ending in ED? not applicable for history
+for (i=0; i<textArray.length; i++) {
+	var pastTense = ["said", "made", "went", "took", "came", "saw", "knew", "got", "gave", "found", "thought", "told", "became", "showed", "left", "put", "brought", "began", "kept", "held", "wrote", "stood", "heard", "let", "meant", "set", "met", "run", "paid", "said", "understood", "bought", "worn", "died", "was", "were", "did"];
+	for (x=0; x<adverbs.length; x++) {
+  	 if (textArray[i] == adverbs[x]) {
+    	textArray[i]= '<span class="orange">'+textArray[i]+'</span>';
+  	}
+  }
+}
 
 // page
+for (i=0; i<textArray.length; i++) {
+	if (textArray[i] == "page") {
+		textArray[i]= '<span class="orange">'+textArray[i]+'</span>';
+	}
+}
 
-// author's name
+// author's name - get from the input
+/*
+for (i=0; i<textArray.length; i++) {
+	if (textArray[i] == <%@authorName%>) {
+		textArray[i]= '<span class="orange">'+textArray[i]+'</span>';
+	}
+} */
 
 // transitions
-
-// pretentious
+for (i=0; i<textArray.length; i++) {
+	var transitions = ["conclusion", "next", "however", "additionally", "moreover", "therefore", "overall", "even"];
+	for (x=0; x<transitions.length; x++) {
+  	 if (textArray[i] == transitions[x]) {
+    	textArray[i]= '<span class="orange">'+textArray[i]+'</span>';
+  	}
+  }
+}
 
 // FIND PHRASES
 
@@ -149,5 +199,9 @@ for (i=0; i<textArray.length; i++) {
 // wrong words
 
 $('h3').html(textArray.join(" "));
+
+$(".orange").click(function() {
+  $("#weakwordexplanation").toggleClass("hidden");
+});
 
 // repetition (FIX LATER)

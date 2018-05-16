@@ -15,9 +15,11 @@ get '/input/result' do
 end
 =end
 
-get '/input/result' do
+post '/input/result' do
 	erb :result
 end
 
+=begin
 post '/result' do
 end
+=end
