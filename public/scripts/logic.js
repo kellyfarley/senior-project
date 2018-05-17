@@ -40,8 +40,10 @@ function checkInput(){
 // maybe look into set interval
 
 // take the input
-//var text = <%@userInput%>
-var text = "you'll be back get soon you'll see; it's all; page. however page get. good I swear isn't it lovely very lovely"
+// var text = <%@userInput%>
+// var text = "you'll be can't like back 1 2 3 makes the decision get can't soon you'll see; it's all; page. however page get. good I swear isn't it lovely very lovely";
+var text = $('#userTextResult').html();
+console.log(text);
 
 // word count
 var textArray = text.split(" ");
@@ -66,6 +68,15 @@ console.log(avgSentence);
 // sentence length variation (FIX LATER)
 
 // highlight very long or very short sentence (FIX LATER)
+/*for (i=0; i<sentenceArray.length; i++) {
+	if (sentenceArray[i] > 10) {
+
+	}
+}
+*/
+// find the first word in the sentence array [i]
+// find the last word - highlight everything in between?
+// maybe knowing how to find phrases will help
 
 // paragraph count (FIX LATER)
 
@@ -174,6 +185,22 @@ for (i=0; i<cleanTextArray.length; i++) {
 	}
 }
 
+// wrong word
+for (i=0; i<cleanTextArray.length; i++) {
+	if (cleanTextArray[i] == "loose") {
+		textArray[i]= '<span class="orange">'+textArray[i]+'</span>';
+	}
+	if (cleanTextArray[i] == "irregardless") {
+		textArray[i]= '<span class="orange">'+textArray[i]+'</span>';
+	}
+	if (cleanTextArray[i] == "noone") {
+		textArray[i]= '<span class="orange">'+textArray[i]+'</span>';
+	}
+	if (cleanTextArray[i] == "like") {
+		textArray[i]= '<span class="orange">'+"such as"+'</span>';
+	}
+}
+
 // author's name - get from the input
 /*
 for (i=0; i<textArray.length; i++) {
@@ -192,23 +219,116 @@ for (i=0; i<cleanTextArray.length; i++) {
   }
 }
 
-// FIND PHRASES
-
-// weak quote intro
-
-// bad phrases
-
-// this shows?
-
 // FIND AND REPLACE
 
 // numbers
+
+function replaceContractions(contraction, replacement) {
+	for (i=0; i<cleanTextArray.length; i++) {
+		if (cleanTextArray[i] == contraction) {
+			textArray[i] = '<span class="red">'+replacement+'</span>';
+		}
+	}
+}
+
+replaceContractions("can't", "cannot");
+replaceContractions("aren't", "are not");
+replaceContractions("could've", "could have");
+replaceContractions("couldn't", "could not");
+replaceContractions("didn't", "did not");
+replaceContractions("doesn't", "does not");
+replaceContractions("hasn't", "has not");
+replaceContractions("haven't", "have not");
+replaceContractions("how'd", "how did");
+replaceContractions("how'll", "how will");
+replaceContractions("it'd", "it would");
+replaceContractions("it's", "it is");
+replaceContractions("she's", "she is");
+replaceContractions("he's", "he is");
+replaceContractions("she'll", "she will");
+replaceContractions("he'll", "he will");
+replaceContractions("she'd", "she would");
+replaceContractions("he'd", "he would");
+replaceContractions("that'll", "that will");
+replaceContractions("that's", "that is");
+replaceContractions("they'd", "they would");
+replaceContractions("they'll", "they will");
+replaceContractions("they're", "they are");
+replaceContractions("they've", "they have");
+replaceContractions("wasn't", "was not");
+replaceContractions("weren't", "were not");
+replaceContractions("won't", "will not");
+replaceContractions("would've", "would have");
+replaceContractions("wouldn't", "would not");
+replaceContractions("who'd", "who would");
+replaceContractions("who'll", "who will");
+replaceContractions("why'd", "why would");
+
+function replaceNumbers(short, long) {
+	for (i=0; i<cleanTextArray.length; i++) {
+		if (cleanTextArray[i] == short) {
+			textArray[i] = '<span class="red">'+long+'</span>';
+		}
+	}
+}
+
+replaceNumbers("1", "one");
+replaceNumbers("2", "two");
+replaceNumbers("3", "three");
+replaceNumbers("4", "four");
+replaceNumbers("5", "five");
+replaceNumbers("6", "six");
+replaceNumbers("7", "seven");
+replaceNumbers("8", "eight");
+replaceNumbers("9", "nine");
+replaceNumbers("10", "ten");
 
 // contractions
 
 // wrong words
 
+// var joinedTextArray = textArray.join(" ");
+// console.log(joinedTextArray);
+
 $('h3').html(textArray.join(" "));
+
+// maybe after we have it joined we can do some shit w sentences and replacing words?
+// jk there will be span tags
+
+// use original string? or find words next to each other
+
+// FIND PHRASES
+
+// makes a decision --> decides
+// comes to the conclusion --> concludes
+// gives the warning --> warns
+// there is/are
+// chooses to
+// decides to
+// goes so far as to say
+// throughout history
+// this shows
+/*for (i=0; i<cleanTextArray.length; i++){
+	var badPhrases = [["makes", "the", "decision"], ["comes", "to", "the", "conclusion"], ["gives", "the", "warning"], ["there", "is"], ["there", "are"], ["chooses", "to"], ["decides", "to"], ["goes", "so", "far", "as", "to", "say"], ["throughout", "history"], ["this", "shows"]];
+	for (x=0; x<badPhrases.length; x++) {
+		if (cleanTextArray[i] = badPhrases[x][0]) {
+			for (k=0; k<badPhrases[x].length; k++){
+				if cleanTextArray
+			}
+		}
+		//if (textArray[i] = badPhrases[0][x]) {
+
+		//}
+  	 //if (cleanTextArray[i] == badPhrases[x][1]) {
+    	//textArray[i]= '<span class="orange">'+textArray[i]+'</span>';
+  	//}
+  }
+ } */
+
+// if matches first thing in array
+// use for loop to see if it matches the other things in the array
+// if it does, put span tag around all of those values (another for loop?)
+
 
 $(".orange").click(function() {
   $("#weakwordexplanation").toggleClass("hidden");

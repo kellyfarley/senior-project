@@ -15,7 +15,9 @@ get '/input/result' do
 end
 =end
 
-post '/input/result' do
+get '/input/result' do
+	@userText = params[:userInput]
+	print params[:userInput]
 	erb :result
 end
 

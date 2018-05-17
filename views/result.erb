@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title> The Write Idea - Results </title>
-	<link rel="stylesheet" type="text/css" href="../styles/inputstyles.css">
+	<link rel="stylesheet" type="text/css" href="/styles/inputstyles.css">
 </head>
 <body>
 <h1 id="title"> THE WRITE IDEA </h1>
@@ -13,11 +13,15 @@
 
 <p> Your piece has <%= @sentencecount %> sentences. </p>
 
-<h2> Your edited essay: </h2>
+<p id="userTextResult"> <%=@userText%> </p>
+
+<h3> Your edited essay: </h3>
+
+<p id="weakwordexplanation" class="hidden"> that was a weak word choice friend </p>
 
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="scripts/logic.js"></script>
+<script type="text/javascript" src="/scripts/logic.js"></script>
 
 </html>
