@@ -1,27 +1,23 @@
 require 'sinatra'
 
-get '/input' do
+get '/' do
 	erb :input
 end
-=begin
-get '/input/result' do
-	@text = "Hello. My name is Kelly. I really hope my code works."
-	#replace text with user input
-	textarray = @text.split
-	@wordcount = textarray.length
-	sentencearray = @text.split(".")
-	@sentencecount = sentencearray.length
-	erb :result
-end
-=end
 
-get '/input/result' do
+get '/result' do
 	@userText = params[:userInput]
-	print params[:userInput]
+	#word count
+	@userText = @userText.to_s
+	@userTextArray = @userText.split(" ")
+	@wordCount = @userTextArray.length
+	#sentence count
+	@sentenceArray = @userText.split(".")
+	@sentenceCount = @sentenceArray.length
+	#average word length
+	@characterCount = @userText.length
+	@letterCount = @characterCount - @wordCount + 1
+	@avgWord = @letterCount / @wordCount
+	#average sentence length
+	@avgSentence = @wordCount / @sentenceCount
 	erb :result
 end
-
-=begin
-post '/result' do
-end
-=end

@@ -1,69 +1,17 @@
+// NOTES
+
+// TO DO
+// maybe look into set interval for live editing!
+
+// OTHER FUNCTIONALITY IDEAS
+
 // find stuff
-/*
-"How are you?".indexOf("o");
-"How are you?".charAt(5);
-
-// replace stuff
-const newString = originalString.replace(/javascript/gi, "JavaScript");
-
-function replace(){
-	text = $(@text).html().replace(/e/g, '<span class="red">e</span>');
-}
-
-// highlight stuff
-for (var i = 0; i < str.length; i++) {
-     if (str[i] == 'e') {
-     newText+= str.charAt(i).fontcolor("red");
-     }
-     else {
-        newText += str[i];
-    }
-}
-s1.innerHTML = newText;
-
-function color_word(text_id, word, color) {
-    words = $('#' + text_id).text().split(' ');
-    words = words.map(function(item) { return item == word ? "<span style='color: " + color + "'>" + word + '</span>' : item });
-    new_words = words.join(' ');
-    $('#' + text_id).html(new_words);
-    }
-
-// puts the entire thing in a span tag so that's an issue
-function checkInput(){
-	var input = $('textarea').val();
-	if(input=="hello"){
-		$('p').append('<span>'+input+'</span>')
-	}
-};
-*/
-
-// maybe look into set interval
+// "How are you?".indexOf("o");
+// "How are you?".charAt(5);
 
 // take the input
-// var text = <%@userInput%>
-// var text = "you'll be can't like back 1 2 3 makes the decision get can't soon you'll see; it's all; page. however page get. good I swear isn't it lovely very lovely";
-var text = $('#userTextResult').html();
-console.log(text);
-
-// word count
+var text = $('#originalUserText').html();
 var textArray = text.split(" ");
-var wordCount = textArray.length;
-console.log(wordCount);
-
-// sentence count
-var sentenceArray = text.split(".");
-var sentenceCount = sentenceArray.length;
-console.log(sentenceCount);
-
-// average word length
-var characterCount = text.length;
-var letterCount = characterCount - wordCount + 1;
-var avgWord = letterCount / wordCount;
-console.log(avgWord);
-
-// average sentence length
-var avgSentence = wordCount / sentenceCount;
-console.log(avgSentence);
 
 // sentence length variation (FIX LATER)
 
@@ -87,8 +35,9 @@ var cleanText = text.toLowerCase();
 var cleanText = cleanText.replace(/\./g, '');
 var cleanText = cleanText.replace(/\,/g, '');
 var cleanText = cleanText.replace(/\;/g, '');
-var cleanTextArray = cleanText.split(" ")
-console.log(cleanTextArray);
+var cleanTextArray = cleanText.split(" ");
+
+// FIX ALL THE CLASSES
 
 // weak verbs
 for (i=0; i<cleanTextArray.length; i++) {
@@ -219,10 +168,6 @@ for (i=0; i<cleanTextArray.length; i++) {
   }
 }
 
-// FIND AND REPLACE
-
-// numbers
-
 function replaceContractions(contraction, replacement) {
 	for (i=0; i<cleanTextArray.length; i++) {
 		if (cleanTextArray[i] == contraction) {
@@ -283,14 +228,9 @@ replaceNumbers("8", "eight");
 replaceNumbers("9", "nine");
 replaceNumbers("10", "ten");
 
-// contractions
-
 // wrong words
 
-// var joinedTextArray = textArray.join(" ");
-// console.log(joinedTextArray);
-
-$('h3').html(textArray.join(" "));
+$('#editedUserText').html(textArray.join(" "));
 
 // maybe after we have it joined we can do some shit w sentences and replacing words?
 // jk there will be span tags
@@ -335,17 +275,4 @@ $(".orange").click(function() {
 });
 
 // repetition (FIX LATER)
-
-// remove last stuff
-function removeLastChar(str) {
-  if (str.slice(-1) == ';') {
-    var str = str.slice(0, -1);  
-  }
-  if (str.slice(-1) == ',') {
-    var str = str.slice(0, -1);  
-  }
-  if (str.slice(-1) == '.') {
-    var str = str.slice(0, -1);  
-  }
-  //console.log(str);
 }
