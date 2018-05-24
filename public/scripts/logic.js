@@ -129,7 +129,7 @@ for (i=0; i<sentenceArray.lenth; i++){
 }*/
 
 // try again FOR THE FOURTH TIME
-var sentenceArray = text.split(".");
+/*var sentenceArray = text.split(".");
 sentenceArray.pop();
 
 for(i=0; i<sentenceArray.length; i++){
@@ -151,7 +151,7 @@ for(i=0; i<sentenceArray.length; i++){
 			textArray[i] = '<span class="orangeText">'+textArray[i]+'</span>';
 		}
 	}
-}
+} */
 // it seems only to be checking for the first error and then giving up
 // the fucking for loop
 
@@ -292,6 +292,49 @@ for (i=0; i<textArray.length; i++) {
 	}
 } */
 
+// repetition (FIX LATER)
+
+// hello repetition it is time to tackle you again
+
+// thoughts on how to deal w it?
+
+// keep counters for every word as it shows up
+
+// if counter is above certain number, highlight all instances of word
+
+// on click, show how many times that word has been used (ooh very fancy)
+
+// if we wanted to get REALLY fancy, we could show proximity
+
+// . unique
+
+// concept - make a different screen for just looking at sentence length alone?
+
+// if indexOf =! indexLast then it appears in array more than once and is repeated -- so then we highlight it! but then how do we show how many times it shows up?
+
+// make a counter
+
+var repetitionArray = [];
+
+for(i=0; i<cleanTextArray.length; i++){
+	console.log(cleanTextArray.indexOf(cleanTextArray[i]));
+	console.log(cleanTextArray.lastIndexOf(cleanTextArray[i]));
+	if (cleanTextArray.indexOf(cleanTextArray[i]) != cleanTextArray.lastIndexOf(cleanTextArray[i])){
+		repetitionArray.push(cleanTextArray[i]);
+	}
+	console.log(repetitionArray);
+	var uniqueRepetitionArray = Array.from(new Set(repetitionArray));
+	console.log(uniqueRepetitionArray);
+	for(x=0; x<uniqueRepetitionArray.length; x++){
+		for(z=0; z<cleanTextArray.length; z++) {
+			if (cleanTextArray[z] = uniqueRepetitionArray[x]) {
+				textArray[z] = '<span class="orangeText">'+textArray[z]+'</span>';
+				console.log(textArray[z]);
+			}
+		}
+	}
+}
+
 // transitions
 for (i=0; i<cleanTextArray.length; i++) {
 	var transitions = ["conclusion", "next", "however", "additionally", "moreover", "therefore", "overall", "even"];
@@ -407,21 +450,3 @@ $('#editedUserText').html(textArray.join(" "));
 $(".orange").click(function() {
   $("#weakwordexplanation").toggleClass("hidden");
 });
-
-// repetition (FIX LATER)
-
-// hello repetition it is time to tackle you again
-
-// thoughts on how to deal w it?
-
-// keep counters for every word as it shows up
-
-// if counter is above certain number, highlight all instances of word
-
-// on click, show how many times that word has been used (ooh very fancy)
-
-// if we wanted to get REALLY fancy, we could show proximity
-
-// . unique
-
-// concept - make a different screen for just looking at sentence length alone?
