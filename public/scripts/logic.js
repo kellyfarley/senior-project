@@ -328,12 +328,14 @@ for(i=0; i<cleanTextArray.length; i++){
 	for(x=0; x<uniqueRepetitionArray.length; x++){
 		for(z=0; z<cleanTextArray.length; z++) {
 			if (cleanTextArray[z] == uniqueRepetitionArray[x]) {
-				textArray[z] = '<span class="orangeText">'+textArray[z]+'</span>';
+				textArray[z] = '<span class="redText">'+textArray[z]+'</span>';
 				console.log(textArray[z]);
 			}
 		}
 	}
 } 
+
+// could look into stemming if have time
 
 // transitions
 for (i=0; i<cleanTextArray.length; i++) {
@@ -449,4 +451,18 @@ $('#editedUserText').html(textArray.join(" "));
 
 $(".orange").click(function() {
   $("#weakwordexplanation").toggleClass("hidden");
+});
+
+
+$(".redText").click(function() {
+	var count = 0;
+	var repeatedWord = $(event.target).text();
+	for (i=0; i<cleanTextArray.length; i++){
+		if (cleanTextArray[i] == repeatedWord) {
+			var count = count + 1;
+		}
+	}
+	console.log(count);
+	$('#count').html(count);
+
 });
