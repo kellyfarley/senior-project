@@ -206,20 +206,6 @@ for(i=0; i<cleanTextArray.length; i++){
 } 
 // could look into stemming if have time - remove ed, ing, ly - search for substrings?
 
-// repetition count
-$(".redText").click(function() {
-	var count = 0;
-	var repeatedWord = $(event.target).text();
-	for (i=0; i<cleanTextArray.length; i++){
-		if (cleanTextArray[i] == repeatedWord) {
-			var count = count + 1;
-		}
-	}
-	console.log(count);
-	$('#count').html(count);
-
-});
-
 // sentence length variation (FIX LATER)
 
 /*
@@ -368,6 +354,20 @@ $('#editedUserText').html(textArray.join(" "));
 // explanations
 $(".orange").click(function() {
   $("#weakwordexplanation").toggleClass("hidden");
+});
+
+// repetition count
+$(".redText").click(function() {
+	var count = 0;
+	var repeatedWord = $(event.target).text();
+	for (i=0; i<cleanTextArray.length; i++){
+		if (cleanTextArray[i] == repeatedWord) {
+			var count = count + 1;
+		}
+	}
+	console.log(count);
+	$('#count').html(count);
+
 });
 
 // if have time: weak phrases
