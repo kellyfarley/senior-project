@@ -12,16 +12,155 @@
 // take the input
 var text = $('#originalUserText').html();
 var textArray = text.split(" ");
+var textArrayLength = textArray.length;
+var textArray = textArray.slice(1, textArrayLength-1);
+//console.log(textArray);
+
+// text array but without the puncuation or caps
+var cleanText = text.toLowerCase();
+var cleanText = cleanText.replace(/\./g, '');
+var cleanText = cleanText.replace(/\,/g, '');
+var cleanText = cleanText.replace(/\;/g, '');
+var cleanTextArray = cleanText.split(" ");
+var cleanTextArrayLength = cleanTextArray.length;
+var cleanTextArray = cleanTextArray.slice(1, cleanTextArrayLength-1);
+//console.log(cleanTextArray);
 
 // sentence length variation (FIX LATER)
 
+/*
 // highlight very long or very short sentence (FIX LATER)
-/*for (i=0; i<sentenceArray.length; i++) {
-	if (sentenceArray[i] > 10) {
-
+var sentenceArray = text.split(".");
+for (i=0; i<sentenceArray.length; i++) {
+	if (sentenceArray[i].length > 30) {
+		var firstWord = sentenceArray[i][0];
+		var firstWordIndexArray = [];
+		for (i=0; i<cleanTextArray.length; i++) {
+			if (cleanTextArray[i] == firstWord) {
+				firstWordIndexArray.push(i);
+			}
+		}
+		var lastWord = sentenceArray[i][sentenceArray.length-1];
+		var lastWordIndexArray = [];
+		for (i=0; i<cleanTextArray.length; i++) {
+			if (cleanTextArray[i] == lastWord) {
+				lastWordIndexArray.push(i);
+			}
+		}
+		console.log(firstWordIndexArray);
+		console.log(lastWordIndexArray);
+		//if firstWordIndexArray[i] + lastWordIndexArray =
+		//var firstWordIndex = textArray[i].indexOf("sentenceArray[i][0]");
+		//textArray[i]= '<span class="purple">'+textArray[i]+'</span>';
+		var firstWord = sentenceArray[i][0];
+		var firstWordIndex = textArray.indexOf(firstWord);
+		var lastWord = sentenceArray[i][(sentenceArray.length)-1];
+		var lastWordIndex = textArray.indexOf(lastWord);
+		for (i=firstWordIndex; i<lastWordIndex; i++){
+			textArray[i]= '<span class="red">'+textArray[i]+'</span>';
+		}
 	}
 }
-*/
+	if (sentenceArray[i].length > 30) {
+		var firstWord = sentenceArray[i][0];
+		var firstWordIndexArray = [];
+		for (i=0; i<cleanTextArray.length; i++) {
+			if (cleanTextArray[i] == firstWord) {
+				firstWordIndexArray.push(i);
+			}
+		}
+		var lastWord = sentenceArray[i][sentenceArray.length-1];
+		var lastWordIndexArray = [];
+		for (i=0; i<cleanTextArray.length; i++) {
+			if (cleanTextArray[i] == lastWord) {
+				lastWordIndexArray.push(i);
+			}
+		}
+		console.log(firstWordIndexArray);
+		console.log(lastWordIndexArray);
+		//if firstWordIndexArray[i] + lastWordIndexArray =
+		//var firstWordIndex = textArray[i].indexOf("sentenceArray[i][0]");
+		//textArray[i]= '<span class="purple">'+textArray[i]+'</span>';
+		var firstWord = sentenceArray[i][0];
+		var firstWordIndex = textArray.indexOf(firstWord);
+		var lastWord = sentenceArray[i][(sentenceArray.length)-1];
+		var lastWordIndex = textArray.indexOf(lastWord);
+		for (i=firstWordIndex; i<lastWordIndex; i++){
+			textArray[i]= '<span class="red">'+textArray[i]+'</span>';
+		}
+	}
+}
+
+var sentenceArray = text.split(".");
+sentenceArray.pop();
+console.log(sentenceArray);
+for (i=0; i<sentenceArray.lenth; i++){
+	//if (sentenceArray[i].length>2){
+		var firstWord = sentenceArray[i][0];
+		var firstWordIndexArray = [];
+		for (i=0; i<cleanTextArray.length; i++) {
+			if (cleanTextArray[i] == firstWord) {
+				firstWordIndexArray.push(i);
+			}
+		}
+		var lastWord = sentenceArray[i][sentenceArray.length-1];
+		var lastWordIndexArray = [];
+		for (i=0; i<cleanTextArray.length; i++) {
+			if (cleanTextArray[i] == lastWord) {
+				lastWordIndexArray.push(i);
+			}
+		}
+		console.log(firstWordIndexArray);
+		console.log(lastWordIndexArray);
+		//if firstWordIndexArray[i] + lastWordIndexArray =
+		//var firstWordIndex = textArray[i].indexOf("sentenceArray[i][0]");
+		//textArray[i]= '<span class="purple">'+textArray[i]+'</span>';
+		//var firstWord = sentenceArray[i][0];
+		//var firstWordIndex = textArray.indexOf(firstWord);
+		//var lastWord = sentenceArray[i][(sentenceArray.length)-1];
+		//var lastWordIndex = textArray.indexOf(lastWord);
+		//for (i=firstWordIndex; i<lastWordIndex; i++){
+			//textArray[i]= '<span class="red">'+textArray[i]+'</span>';	
+	}
+/*for(i=0; i<sentenceArray.length; i++){
+	var string = sentenceArray[i];
+	var string = string.substr(1);
+	console.log(string);
+}*/
+
+// try again FOR THE FOURTH TIME
+var sentenceArray = text.split(".");
+sentenceArray.pop();
+
+for(i=0; i<sentenceArray.length; i++){
+	var individualSentenceArray = sentenceArray[i];
+	var individualSentenceArray = individualSentenceArray.split(" ");
+	if (individualSentenceArray[0]==""){
+		var individualSentenceArray = individualSentenceArray.slice(1, individualSentenceArray.length);
+	}
+	var firstWord = individualSentenceArray[0];
+	var lastWord = individualSentenceArray[(individualSentenceArray.length)-1];
+	console.log(firstWord);
+	console.log(lastWord);
+	var firstWordIndex = cleanTextArray.indexOf(firstWord);
+	var lastWordIndex = cleanTextArray.indexOf(lastWord);
+	console.log(firstWordIndex);
+	console.log(lastWordIndex);
+	if (individualSentenceArray.length > 3) {
+		for(i=firstWordIndex; i<(lastWordIndex+1); i++){
+			textArray[i] = '<span class="orangeText">'+textArray[i]+'</span>';
+		}
+	}
+}
+// it seems only to be checking for the first error and then giving up
+// the fucking for loop
+
+/*else if (individualSentenceArray.length < 5) {
+	for(i=firstWordIndex; i<(lastWordIndex+1); i++){
+		textArray[i] = '<span class="orangeText">'+textArray[i]+'</span>';
+	} } */
+
+
 // find the first word in the sentence array [i]
 // find the last word - highlight everything in between?
 // maybe knowing how to find phrases will help
@@ -30,13 +169,6 @@ var textArray = text.split(" ");
 
 // highlight bad punctuation, exclamation marks and question marks (FIX LATER)
 
-// text array but without the puncuation or caps
-var cleanText = text.toLowerCase();
-var cleanText = cleanText.replace(/\./g, '');
-var cleanText = cleanText.replace(/\,/g, '');
-var cleanText = cleanText.replace(/\;/g, '');
-var cleanTextArray = cleanText.split(" ");
-
 // FIX ALL THE CLASSES
 
 // weak verbs
@@ -44,7 +176,7 @@ for (i=0; i<cleanTextArray.length; i++) {
   var weakVerbs = ["get", "gets", "say", "says", "proves", "prove", "seem", "seems", "begin", "begins"];
   for (x=0; x<weakVerbs.length; x++) {
   	 if (cleanTextArray[i] == weakVerbs[x]) {
-    	textArray[i]= '<span class="red">'+textArray[i]+'</span>';
+    	textArray[i]= '<span class="redText">'+textArray[i]+'</span>';
   	}
   }
 }
@@ -275,4 +407,3 @@ $(".orange").click(function() {
 });
 
 // repetition (FIX LATER)
-}
