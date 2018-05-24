@@ -1,7 +1,7 @@
 require 'sinatra'
 
 get '/' do
-	
+	erb :input
 end
 
 # get '/result' do
