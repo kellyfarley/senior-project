@@ -1,19 +1,21 @@
-// take the input
+// take in user input
 var text = $('#originalUserText').html();
+
+// convert into sentence array & take out blank spaces
 var textArray = text.split(" ");
 var textArrayLength = textArray.length;
 var textArray = textArray.slice(1, textArrayLength-1);
-//console.log(textArray);
 
-// text array but without the puncuation or caps
+// text array but without punctuation or caps
+// first as string
 var cleanText = text.toLowerCase();
 var cleanText = cleanText.replace(/\./g, '');
 var cleanText = cleanText.replace(/\,/g, '');
 var cleanText = cleanText.replace(/\;/g, '');
+//convert to array & take out blank spaces
 var cleanTextArray = cleanText.split(" ");
 var cleanTextArrayLength = cleanTextArray.length;
 var cleanTextArray = cleanTextArray.slice(1, cleanTextArrayLength-1);
-//console.log(cleanTextArray);
 
 // sentence length variation (FIX LATER)
 
@@ -156,12 +158,6 @@ for(i=0; i<sentenceArray.length; i++){
 // find the last word - highlight everything in between?
 // maybe knowing how to find phrases will help
 
-// paragraph count (FIX LATER)
-
-// highlight bad punctuation, exclamation marks and question marks (FIX LATER)
-
-// FIX ALL THE CLASSES
-
 // weak verbs
 for (i=0; i<cleanTextArray.length; i++) {
   var weakVerbs = ["get", "gets", "say", "says", "proves", "prove", "seem", "seems", "begin", "begins"];
@@ -191,19 +187,10 @@ for (i=0; i<cleanTextArray.length; i++) {
   	}
   }
 }
-// replace "like" with "such as"?
 
-// passive voice
-for (i=0; i<cleanTextArray.length; i++) {
-	var passiveVoice = ["is", "am", "are"];
-	for (x=0; x<passiveVoice.length; x++) {
-  	 if (cleanTextArray[i] == passiveVoice[x]) {
-    	textArray[i]= '<span class="orange">'+textArray[i]+'</span>';
-  	}
-  }
-}
+// passive voice - check to see if next word ends in -ing - is, are, next word ending in ed
 
-// naked this - maybe only highlight if follwed by "shows"?
+// naked this - maybe only highlight if followed by "shows"?
 for (i=0; i<cleanTextArray.length; i++) {
 	if (cleanTextArray[i] == "this") {
     	textArray[i]= '<span class="yellow">'+textArray[i]+'</span>';
@@ -240,7 +227,7 @@ for (i=0; i<cleanTextArray.length; i++) {
   }
 }
 
-// past tense - check for words ending in ED? not applicable for history
+// past tense - check for words ending in ED? (note: not applicable for history essays)
 for (i=0; i<cleanTextArray.length; i++) {
 	var pastTense = ["said", "made", "went", "took", "came", "saw", "knew", "got", "gave", "found", "thought", "told", "became", "showed", "left", "put", "brought", "began", "kept", "held", "wrote", "stood", "heard", "let", "meant", "set", "met", "run", "paid", "said", "understood", "bought", "worn", "died", "was", "were", "did"];
 	for (x=0; x<adverbs.length; x++) {
@@ -263,57 +250,27 @@ for (i=0; i<cleanTextArray.length; i++) {
 		textArray[i]= '<span class="orange">'+textArray[i]+'</span>';
 	}
 	if (cleanTextArray[i] == "irregardless") {
-		textArray[i]= '<span class="orange">'+textArray[i]+'</span>';
+		textArray[i]= '<span class="orange">'+"regardless"+'</span>';
 	}
 	if (cleanTextArray[i] == "noone") {
-		textArray[i]= '<span class="orange">'+textArray[i]+'</span>';
+		textArray[i]= '<span class="orange">'+"nobody"+'</span>';
 	}
 	if (cleanTextArray[i] == "like") {
 		textArray[i]= '<span class="orange">'+"such as"+'</span>';
 	}
 }
 
-// author's name - get from the input
-/*
-for (i=0; i<textArray.length; i++) {
-	if (textArray[i] == <%@authorName%>) {
-		textArray[i]= '<span class="orange">'+textArray[i]+'</span>';
-	}
-} */
-
-// repetition (FIX LATER)
-
-// hello repetition it is time to tackle you again
-
-// thoughts on how to deal w it?
-
-// keep counters for every word as it shows up
-
-// if counter is above certain number, highlight all instances of word
-
-// on click, show how many times that word has been used (ooh very fancy)
-
-// if we wanted to get REALLY fancy, we could show proximity
-
-// . unique
-
-// concept - make a different screen for just looking at sentence length alone?
-
-// if indexOf =! indexLast then it appears in array more than once and is repeated -- so then we highlight it! but then how do we show how many times it shows up?
-
-// make a counter
+// repetition
 
 var repetitionArray = [];
 
 for(i=0; i<cleanTextArray.length; i++){
-	console.log(cleanTextArray.indexOf(cleanTextArray[i]));
-	console.log(cleanTextArray.lastIndexOf(cleanTextArray[i]));
+	// if the first index isn't the same as the last index, must show up at least twice
 	if (cleanTextArray.indexOf(cleanTextArray[i]) != cleanTextArray.lastIndexOf(cleanTextArray[i])){
 		repetitionArray.push(cleanTextArray[i]);
 	}
-	console.log(repetitionArray);
+	// take out repetitions from array
 	var uniqueRepetitionArray = Array.from(new Set(repetitionArray));
-	console.log(uniqueRepetitionArray);
 	// take out common words from array
 	var repetitionsToIgnore = ["a", "the", "of", "to", "and", "with", "as", "at"];
 	for(j=0; j<cleanTextArray.length; j++){
@@ -323,7 +280,7 @@ for(i=0; i<cleanTextArray.length; i++){
 		}
 	}
 	console.log(uniqueRepetitionArray);
-	//
+	// mark up words that are repeated
 	for(x=0; x<uniqueRepetitionArray.length; x++){
 		for(z=0; z<cleanTextArray.length; z++) {
 			if (cleanTextArray[z] == uniqueRepetitionArray[x]) {
@@ -333,19 +290,9 @@ for(i=0; i<cleanTextArray.length; i++){
 		}
 	}
 } 
-
 // could look into stemming if have time - remove ed, ing, ly - search for substrings?
 
-// transitions
-for (i=0; i<cleanTextArray.length; i++) {
-	var transitions = ["conclusion", "next", "however", "additionally", "moreover", "therefore", "overall", "even"];
-	for (x=0; x<transitions.length; x++) {
-  	 if (cleanTextArray[i] == transitions[x]) {
-    	textArray[i]= '<span class="orange">'+textArray[i]+'</span>';
-  	}
-  }
-}
-
+// find & replace contractions
 function replaceContractions(contraction, replacement) {
 	for (i=0; i<cleanTextArray.length; i++) {
 		if (cleanTextArray[i] == contraction) {
@@ -387,6 +334,7 @@ replaceContractions("who'd", "who would");
 replaceContractions("who'll", "who will");
 replaceContractions("why'd", "why would");
 
+// find and replace numbers that should be written out
 function replaceNumbers(short, long) {
 	for (i=0; i<cleanTextArray.length; i++) {
 		if (cleanTextArray[i] == short) {
@@ -406,17 +354,30 @@ replaceNumbers("8", "eight");
 replaceNumbers("9", "nine");
 replaceNumbers("10", "ten");
 
-// wrong words
-
+// replace html w/ marked up version
 $('#editedUserText').html(textArray.join(" "));
 
-// maybe after we have it joined we can do some shit w sentences and replacing words?
-// jk there will be span tags
 
-// use original string? or find words next to each other
+// explanations
+$(".orange").click(function() {
+  $("#weakwordexplanation").toggleClass("hidden");
+});
 
-// FIND PHRASES
+// word count
+$(".redText").click(function() {
+	var count = 0;
+	var repeatedWord = $(event.target).text();
+	for (i=0; i<cleanTextArray.length; i++){
+		if (cleanTextArray[i] == repeatedWord) {
+			var count = count + 1;
+		}
+	}
+	console.log(count);
+	$('#count').html(count);
 
+});
+
+// if have time: weak phrases
 // makes a decision --> decides
 // comes to the conclusion --> concludes
 // gives the warning --> warns
@@ -426,7 +387,7 @@ $('#editedUserText').html(textArray.join(" "));
 // goes so far as to say
 // throughout history
 // this shows
-/*for (i=0; i<cleanTextArray.length; i++){
+/* for (i=0; i<cleanTextArray.length; i++){
 	var badPhrases = [["makes", "the", "decision"], ["comes", "to", "the", "conclusion"], ["gives", "the", "warning"], ["there", "is"], ["there", "are"], ["chooses", "to"], ["decides", "to"], ["goes", "so", "far", "as", "to", "say"], ["throughout", "history"], ["this", "shows"]];
 	for (x=0; x<badPhrases.length; x++) {
 		if (cleanTextArray[i] = badPhrases[x][0]) {
@@ -442,26 +403,3 @@ $('#editedUserText').html(textArray.join(" "));
   	//}
   }
  } */
-
-// if matches first thing in array
-// use for loop to see if it matches the other things in the array
-// if it does, put span tag around all of those values (another for loop?)
-
-
-$(".orange").click(function() {
-  $("#weakwordexplanation").toggleClass("hidden");
-});
-
-
-$(".redText").click(function() {
-	var count = 0;
-	var repeatedWord = $(event.target).text();
-	for (i=0; i<cleanTextArray.length; i++){
-		if (cleanTextArray[i] == repeatedWord) {
-			var count = count + 1;
-		}
-	}
-	console.log(count);
-	$('#count').html(count);
-
-});
