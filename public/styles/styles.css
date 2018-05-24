@@ -1,0 +1,59 @@
+#title{
+  font-family: garamond;
+  font-size: 40px;
+  color: white;
+  background-color: #0066ff;
+  border: 10px solid #003d99;
+  padding: 20px;
+}
+
+p{
+  font-family: garamond;
+  font-size: 15px;
+  color: #003d99;
+}
+
+h2{
+  font-family: garamond;
+  font-size: 20px;
+  color: #003d99;
+}
+
+body{
+  background-color: #e6f0ff;
+}
+
+/* all the explanations */
+
+.hidden{
+  display: none;
+}
+
+#weakwordexplanation{
+  position: fixed;
+  left: 10px;
+  top: 600px;
+  background-color: pink;
+}
+
+/* all the highlighting effects */
+
+.redText{
+  color: red;
+}
+
+.orangeText{
+  color: orange;
+}
+
+.yellowText{
+  color: yellow;
+}
+
+.greenText{
+  color: green;
+}
+
+.purpleText{
+  color: purple;
+}
