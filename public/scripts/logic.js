@@ -160,6 +160,8 @@ for(i=0; i<sentenceArray.length; i++){
 		textArray[i] = '<span class="orangeText">'+textArray[i]+'</span>';
 	} } */
 
+// concept - only look at individual sentence arrays
+
 
 // find the first word in the sentence array [i]
 // find the last word - highlight everything in between?
@@ -407,3 +409,19 @@ $(".orange").click(function() {
 });
 
 // repetition (FIX LATER)
+
+// hello repetition it is time to tackle you again
+
+// thoughts on how to deal w it?
+
+// keep counters for every word as it shows up
+
+// if counter is above certain number, highlight all instances of word
+
+// on click, show how many times that word has been used (ooh very fancy)
+
+// if we wanted to get REALLY fancy, we could show proximity
+
+// . unique
+
+// concept - make a different screen for just looking at sentence length alone?
