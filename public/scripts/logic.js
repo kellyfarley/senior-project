@@ -325,6 +325,16 @@ for(i=0; i<cleanTextArray.length; i++){
 	console.log(repetitionArray);
 	var uniqueRepetitionArray = Array.from(new Set(repetitionArray));
 	console.log(uniqueRepetitionArray);
+	// take out common words from array
+	var repetitionsToIgnore = ["a", "the", "of", "to", "and", "with", "as", "at"];
+	for(j=0; j<cleanTextArray.length; j++){
+		var index = uniqueRepetitionArray.indexOf(repetitionsToIgnore[j]);
+		if (index != -1){
+			uniqueRepetitionArray.splice(index, 1);
+		}
+	}
+	console.log(uniqueRepetitionArray);
+	//
 	for(x=0; x<uniqueRepetitionArray.length; x++){
 		for(z=0; z<cleanTextArray.length; z++) {
 			if (cleanTextArray[z] == uniqueRepetitionArray[x]) {
@@ -335,7 +345,7 @@ for(i=0; i<cleanTextArray.length; i++){
 	}
 } 
 
-// could look into stemming if have time
+// could look into stemming if have time - remove ed, ing, ly - search for substrings?
 
 // transitions
 for (i=0; i<cleanTextArray.length; i++) {
