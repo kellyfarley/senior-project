@@ -327,13 +327,13 @@ for(i=0; i<cleanTextArray.length; i++){
 	console.log(uniqueRepetitionArray);
 	for(x=0; x<uniqueRepetitionArray.length; x++){
 		for(z=0; z<cleanTextArray.length; z++) {
-			if (cleanTextArray[z] = uniqueRepetitionArray[x]) {
+			if (cleanTextArray[z] == uniqueRepetitionArray[x]) {
 				textArray[z] = '<span class="orangeText">'+textArray[z]+'</span>';
 				console.log(textArray[z]);
 			}
 		}
 	}
-}
+} 
 
 // transitions
 for (i=0; i<cleanTextArray.length; i++) {
