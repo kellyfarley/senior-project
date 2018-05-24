@@ -1,14 +1,3 @@
-// NOTES
-
-// TO DO
-// maybe look into set interval for live editing!
-
-// OTHER FUNCTIONALITY IDEAS
-
-// find stuff
-// "How are you?".indexOf("o");
-// "How are you?".charAt(5);
-
 // take the input
 var text = $('#originalUserText').html();
 var textArray = text.split(" ");
