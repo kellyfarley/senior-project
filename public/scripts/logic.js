@@ -223,10 +223,8 @@ for(i=0; i<cleanTextArray.length; i++){
 	}
 	// mark up words that are repeated
 	for(x=0; x<uniqueRepetitionArray.length; x++){
-		for(z=0; z<cleanTextArray.length; z++) {
-			if (cleanTextArray[z] == uniqueRepetitionArray[x]) {
-				textArray[z] = '<span class="redText">'+textArray[z]+'</span>';
-			}
+		if (cleanTextArray[i] == uniqueRepetitionArray[x]) {
+				textArray[i] = '<span class="redText">'+textArray[i]+'</span>';
 		}
 	}
 } 
@@ -236,19 +234,30 @@ for(i=0; i<cleanTextArray.length; i++){
 
 // sentence length variation (FIX LATER)
 
-/*
 // highlight very long or very short sentence (FIX LATER)
 var sentenceArray = text.split(".");
+sentenceArray.pop();
+
+var firstWordIndexArray = [];
+		var lastWordIndexArray = [];
+
 for (i=0; i<sentenceArray.length; i++) {
-	if (sentenceArray[i].length > 30) {
+	var individualSentenceArray = sentenceArray[i];
+	var individualSentenceArray = individualSentenceArray.split(" ");
+	if (individualSentenceArray[0]==""){
+		var individualSentenceArray = individualSentenceArray.slice(1, individualSentenceArray.length);
+	}
+	if(individualSentenceArray.length>30){
 		var firstWord = sentenceArray[i][0];
-		var firstWordIndexArray = [];
-		for (i=0; i<cleanTextArray.length; i++) {
-			if (cleanTextArray[i] == firstWord) {
+		for (j=0; j<cleanTextArray.length; j++){
+			if (cleanTextArray[j] == firstWord) {
 				firstWordIndexArray.push(i);
 			}
 		}
 		var lastWord = sentenceArray[i][sentenceArray.length-1];
+	}
+}
+		/*var lastWord = sentenceArray[i][sentenceArray.length-1];
 		var lastWordIndexArray = [];
 		for (i=0; i<cleanTextArray.length; i++) {
 			if (cleanTextArray[i] == lastWord) {
@@ -268,7 +277,7 @@ for (i=0; i<sentenceArray.length; i++) {
 			textArray[i]= '<span class="red">'+textArray[i]+'</span>';
 		}
 	}
-}
+} /*
 	if (sentenceArray[i].length > 30) {
 		var firstWord = sentenceArray[i][0];
 		var firstWordIndexArray = [];
@@ -301,7 +310,8 @@ for (i=0; i<sentenceArray.length; i++) {
 
 var sentenceArray = text.split(".");
 sentenceArray.pop();
-console.log(sentenceArray);
+console.log(sentenceArray); */
+/*
 for (i=0; i<sentenceArray.lenth; i++){
 	//if (sentenceArray[i].length>2){
 		var firstWord = sentenceArray[i][0];
@@ -330,14 +340,14 @@ for (i=0; i<sentenceArray.lenth; i++){
 		//for (i=firstWordIndex; i<lastWordIndex; i++){
 			//textArray[i]= '<span class="red">'+textArray[i]+'</span>';	
 	}
-/*for(i=0; i<sentenceArray.length; i++){
+for(i=0; i<sentenceArray.length; i++){
 	var string = sentenceArray[i];
 	var string = string.substr(1);
 	console.log(string);
-}*/
+}
 
 // try again FOR THE FOURTH TIME
-/*var sentenceArray = text.split(".");
+var sentenceArray = text.split(".");
 sentenceArray.pop();
 
 for(i=0; i<sentenceArray.length; i++){
@@ -359,30 +369,21 @@ for(i=0; i<sentenceArray.length; i++){
 			textArray[i] = '<span class="orangeText">'+textArray[i]+'</span>';
 		}
 	}
-} */
-// it seems only to be checking for the first error and then giving up
-// the fucking for loop
+}
 
-/*else if (individualSentenceArray.length < 5) {
+else if (individualSentenceArray.length < 5) {
 	for(i=firstWordIndex; i<(lastWordIndex+1); i++){
 		textArray[i] = '<span class="orangeText">'+textArray[i]+'</span>';
 	} } */
-
-// concept - only look at individual sentence arrays
-
-
-// find the first word in the sentence array [i]
-// find the last word - highlight everything in between?
-// maybe knowing how to find phrases will help
 
 // replace html w/ marked up version
 $('#editedUserText').html(textArray.join(" "));
 
 
-// explanations
-$(".orange").click(function() {
-  $("#weakwordexplanation").toggleClass("hidden");
-});
+// // explanations
+// $(".orange").click(function() {
+//   $("#weakwordexplanation").toggleClass("hidden");
+// });
 
 // repetition count
 $(".redText").click(function() {
@@ -404,6 +405,11 @@ $(".orangeText").hover(function(){
     }, function(){
     $(this).css("background-color", "pink");
 });
+
+// console.log($('#editedUserText span'));
+/*$('#editedUserText span').on("click", function(){
+	console.log(this);
+}); */
 
 // if have time: weak phrases
 // makes a decision --> decides
