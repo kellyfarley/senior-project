@@ -80,7 +80,7 @@ for (i=0; i<cleanTextArray.length; i++) {
   	}
 }
 
-// first person
+// 1st person
 for (i=0; i<cleanTextArray.length; i++) {
 	var firstPerson = ["I", "me", "we", "our", "I'm", "I'll", "I'd", "we're", "we'd", "we'll"];
 	for (x=0; x<firstPerson.length; x++) {
@@ -162,20 +162,48 @@ replaceNumbers("8", "eight");
 replaceNumbers("9", "nine");
 replaceNumbers("10", "ten");
 
-// passive voice - check to see if next word ends in -ing - is, are, next word ending in ed
+// passive voice - what about irregulars?
 
-// past tense - check for words ending in ED? (note: not applicable for history essays)
+// present passive voice
 for (i=0; i<cleanTextArray.length; i++) {
-	var pastTense = ["said", "made", "went", "took", "came", "saw", "knew", "got", "gave", "found", "thought", "told", "became", "showed", "left", "put", "brought", "began", "kept", "held", "wrote", "stood", "heard", "let", "meant", "set", "met", "run", "paid", "said", "understood", "bought", "worn", "died", "was", "were", "did"];
-	for (x=0; x<adverbs.length; x++) {
-  	 if (cleanTextArray[i] == adverbs[x]) {
-    	textArray[i]= '<span class="orange">'+textArray[i]+'</span>';
+	var presentPassiveVoice = ["is", "are", "has"];
+	for (x=0; x<presentPassiveVoice.length; x++) {
+  	 if (cleanTextArray[i] == presentPassiveVoice[x]) {
+    	if (cleanTextArray[i+1].indexOf("ing") != -1){
+    		textArray[i] = '<span class="orangeText">'+textArray[i]+'</span>';
+    		textArray[i+1] = '<span class="orangeText">'+textArray[i+1]+'</span>';
   	}
   }
 }
+}
+
+// past passive voice
+for (i=0; i<cleanTextArray.length; i++) {
+	var presentPassiveVoice = ["were", "was", "had"];
+	for (x=0; x<presentPassiveVoice.length; x++) {
+  	 if (cleanTextArray[i] == presentPassiveVoice[x]) {
+    	if (cleanTextArray[i+1].indexOf("ed") != -1){
+    		textArray[i] = '<span class="orangeText">'+textArray[i]+'</span>';
+    		textArray[i+1] = '<span class="orangeText">'+textArray[i+1]+'</span>';
+  	}
+  }
+}
+}
+
+// past tense (note: not applicable for history essays)
+for (i=0; i<cleanTextArray.length; i++) {
+	var pastTense = ["said", "made", "went", "took", "came", "saw", "knew", "got", "gave", "found", "thought", "told", "became", "showed", "left", "put", "brought", "began", "kept", "held", "wrote", "stood", "heard", "let", "meant", "set", "met", "run", "paid", "said", "understood", "bought", "worn", "died", "was", "were", "did"];
+	for (x=0; x<pastTense.length; x++) {
+		if (cleanTextArray[i] == pastTense[x]) {
+    		textArray[i]= '<span class="orangeText">'+textArray[i]+'</span>';
+  		}
+  		if (cleanTextArray[i].indexOf("ed") != -1){
+  			textArray[i] = '<span class="orangeText">'+textArray[i]+'</span>';
+  		}
+	}
+}
 
 // repetition
-
 var repetitionArray = [];
 
 for(i=0; i<cleanTextArray.length; i++){
@@ -193,18 +221,18 @@ for(i=0; i<cleanTextArray.length; i++){
 			uniqueRepetitionArray.splice(index, 1);
 		}
 	}
-	console.log(uniqueRepetitionArray);
 	// mark up words that are repeated
 	for(x=0; x<uniqueRepetitionArray.length; x++){
 		for(z=0; z<cleanTextArray.length; z++) {
 			if (cleanTextArray[z] == uniqueRepetitionArray[x]) {
 				textArray[z] = '<span class="redText">'+textArray[z]+'</span>';
-				console.log(textArray[z]);
 			}
 		}
 	}
 } 
 // could look into stemming if have time - remove ed, ing, ly - search for substrings?
+
+// sentences starting the same way
 
 // sentence length variation (FIX LATER)
 
@@ -368,6 +396,13 @@ $(".redText").click(function() {
 	console.log(count);
 	$('#count').html(count);
 
+});
+
+// hover over repeated word
+$(".orangeText").hover(function(){
+    $(this).css("background-color", "white");
+    }, function(){
+    $(this).css("background-color", "pink");
 });
 
 // if have time: weak phrases
