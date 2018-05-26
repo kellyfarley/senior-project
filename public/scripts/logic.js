@@ -148,7 +148,7 @@ for (i=0; i<cleanTextArray.length; i++) {
 }
 
 // past passive voice
-for (i=0; i<cleanTextArray.length; i++) {
+for (i=0; i<((cleanTextArray.length)-1); i++) {
 	var presentPassiveVoice = ["were", "was", "had"];
 	for (x=0; x<presentPassiveVoice.length; x++) {
   	 if (cleanTextArray[i] == presentPassiveVoice[x]) {
@@ -161,7 +161,7 @@ for (i=0; i<cleanTextArray.length; i++) {
 }
 
 // past tense (note: not applicable for history essays)
-for (i=0; i<cleanTextArray.length; i++) {
+for (i=0; i<((cleanTextArray.length)-1); i++) {
 	var pastTense = ["said", "made", "went", "took", "came", "saw", "knew", "got", "gave", "found", "thought", "told", "became", "showed", "left", "put", "brought", "began", "kept", "held", "wrote", "stood", "heard", "let", "meant", "set", "met", "run", "paid", "said", "understood", "bought", "worn", "died", "was", "were", "did"];
 	for (x=0; x<pastTense.length; x++) {
 		if (cleanTextArray[i] == pastTense[x]) {
@@ -350,23 +350,26 @@ else if (individualSentenceArray.length < 5) {
 $('#editedUserText').html(textArray.join(" "));
 
 
-// // explanations
-// $(".orange").click(function() {
-//   $("#weakwordexplanation").toggleClass("hidden");
-// });
+// explanations
+$(".orange").click(function() {
+	$("#weakwordexplanation").toggleClass("hidden");
+});
 
 // repetition count
 $(".redText").click(function() {
 	var count = 0;
 	var repeatedWord = $(event.target).text();
+	var repeatedWord = repeatedWord.toLowerCase();
+	console.log(repeatedWord);
 	for (i=0; i<cleanTextArray.length; i++){
 		if (cleanTextArray[i] == repeatedWord) {
 			var count = count + 1;
 		}
 	}
 	console.log(count);
-	$('#count').html(count);
-
+	var @repetitionCount = count;
+	$("#repetitionExplanation").toggleClass("hidden");
+	console.log("testing");
 });
 
 // hover over repeated word
