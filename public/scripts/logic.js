@@ -360,16 +360,13 @@ $(".redText").click(function() {
 	var count = 0;
 	var repeatedWord = $(event.target).text();
 	var repeatedWord = repeatedWord.toLowerCase();
-	console.log(repeatedWord);
 	for (i=0; i<cleanTextArray.length; i++){
 		if (cleanTextArray[i] == repeatedWord) {
 			var count = count + 1;
 		}
 	}
-	console.log(count);
-	$('#repetitionExplanation').html("You've used this word repeatedly - maybe try to change it up to avoid boring the reader. You've used this word"+count+"times.");
+	$('#repetitionExplanation').html("You've used this word repeatedly - maybe try to change it up to avoid boring the reader. You've used this word "+count+"times.");
 	$("#repetitionExplanation").toggleClass("hidden");
-	console.log("testing");
 });
 
 // hover over repeated word
