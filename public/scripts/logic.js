@@ -367,7 +367,6 @@ $(".redText").click(function() {
 		}
 	}
 	console.log(count);
-	var @repetitionCount = count;
 	$("#repetitionExplanation").toggleClass("hidden");
 	console.log("testing");
 });
