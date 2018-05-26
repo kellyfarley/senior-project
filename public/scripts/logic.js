@@ -47,20 +47,10 @@ for (i=0; i<cleanTextArray.length; i++) {
   }
 }
 
-// overused words
-for (i=0; i<cleanTextArray.length; i++) {
-	var weakWords = ["good", "like", "just", "evilness", "there", "large", "like"];
-	for (x=0; x<weakWords.length; x++) {
-  	 if (cleanTextArray[i] == weakWords[x]) {
-    	textArray[i]= '<span class="green">'+textArray[i]+'</span>';
-  	}
-  }
-}
-
 // wrong word
 for (i=0; i<cleanTextArray.length; i++) {
 	if (cleanTextArray[i] == "loose") {
-		textArray[i]= '<span class="orange">'+textArray[i]+'</span>';
+		textArray[i]= '<span class="orange">'+lose+'</span>';
 	}
 	if (cleanTextArray[i] == "irregardless") {
 		textArray[i]= '<span class="orange">'+"regardless"+'</span>';
@@ -141,26 +131,6 @@ replaceContractions("wouldn't", "would not");
 replaceContractions("who'd", "who would");
 replaceContractions("who'll", "who will");
 replaceContractions("why'd", "why would");
-
-// find & replace numbers that should be written out
-function replaceNumbers(short, long) {
-	for (i=0; i<cleanTextArray.length; i++) {
-		if (cleanTextArray[i] == short) {
-			textArray[i] = '<span class="red">'+long+'</span>';
-		}
-	}
-}
-
-replaceNumbers("1", "one");
-replaceNumbers("2", "two");
-replaceNumbers("3", "three");
-replaceNumbers("4", "four");
-replaceNumbers("5", "five");
-replaceNumbers("6", "six");
-replaceNumbers("7", "seven");
-replaceNumbers("8", "eight");
-replaceNumbers("9", "nine");
-replaceNumbers("10", "ten");
 
 // passive voice - what about irregulars?
 
@@ -432,8 +402,14 @@ $(".orangeText").hover(function(){
 		//if (textArray[i] = badPhrases[0][x]) {
 
 		//}
-  	 //if (cleanTextArray[i] == badPhrases[x][1]) {
+  	 //if (cleanTextArray[i] == badPhrases[x][1]) 
     	//textArray[i]= '<span class="orange">'+textArray[i]+'</span>';
   	//}
   }
  } */
+
+ // $('form button').on('click', function(event){
+ 	// event.preventDefault();
+
+ 	// whatever logic
+ // });

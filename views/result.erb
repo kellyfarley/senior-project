@@ -19,13 +19,29 @@
 
 <h2> Your original essay: </h2>
 
-<p id="originalUserText"> <%=@userText%> </p>
+<p id="originalUserText"> <%= @userText%> </p>
 
 <h2> Your edited essay: </h2>
 
 <p id="editedUserText"> </p>
 
-<p id="weakwordexplanation" class="hidden"> Weak word choice: this word is overused and has lost meaning. Consult a thesaurus. </p>
+<p id="weakVerbExplanation" class="hidden"> This verb is overused (though can sometimes be appropriate if trying to place emphasis on something other than the action). Consider consulting a thesaurus if that was not your intention. </p>
+
+<p id="vagueNounExplanation" class="hidden"> This word is too generic - what exactly are you talking about? </p>
+
+<p id="adverbExplanation" class="hidden"> In Mr. Cruz’s words, “Kill all adverbs.” Using an adverb usually means you’re using a weaker verb - try to change that verb to be more powerful. </p>
+
+<p id="misusedExplanation" class="hidden"> This word is probably being misused. Check to make sure the changed version of it makes sense. </p>
+
+<p id="nakedThisExplanation" class="hidden"> Add a noun after “this” to avoid any confusion about what you’re talking about. </p>
+
+<p id="firstPersonExplanation" class="hidden"> First person should be avoided in formal essays. Think about taking out yourself and stating it as a fact. </p>
+
+<p id="secondPersonExplanation" class="hidden"> Second person should be avoided in formal essays. Perhaps use “one” instead. </p>
+
+<p id="contractionsExplanation" class="hidden"> Contractions should be avoided in formal essays. The full version of the word has been added. </p>
+
+<p id="passiveVoiceExplanation" class="hidden"> Passive voice makes your writing less direct but can be useful when placing emphasis on the object/action or when the person performing the action is unknown. Check to make sure this use of passive voice has a purpose. </p>
 
 <p id="count"> </p>
 

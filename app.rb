@@ -4,7 +4,7 @@ get '/' do
 	erb :input
 end
 
-get '/result' do
+post '/result' do
 	@userText = params[:userInput]
 	#word count
 	@userText = @userText.to_s
