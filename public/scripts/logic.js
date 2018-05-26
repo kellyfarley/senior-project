@@ -367,6 +367,7 @@ $(".redText").click(function() {
 		}
 	}
 	console.log(count);
+	$('#repetitionExplanation').html("You've used this word repeatedly - maybe try to change it up to avoid boring the reader. You've used this word"+count+"times.");
 	$("#repetitionExplanation").toggleClass("hidden");
 	console.log("testing");
 });
