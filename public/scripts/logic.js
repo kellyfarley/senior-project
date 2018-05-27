@@ -175,6 +175,7 @@ for (i=0; i<((cleanTextArray.length)-1); i++) {
 
 // repetition
 var repetitionArray = [];
+var manyRepetitionArray = [];
 
 function countInArray(array, what){
 	var count = 0;
@@ -187,40 +188,28 @@ function countInArray(array, what){
 }
 
 for(i=0; i<cleanTextArray.length; i++){
+	var count = 0;
 	// if the first index isn't the same as the last index, must show up at least twice
 	if (cleanTextArray.indexOf(cleanTextArray[i]) != cleanTextArray.lastIndexOf(cleanTextArray[i])){
 		repetitionArray.push(cleanTextArray[i]);
 	}
-	console.log(repetitionArray);
-	// make array with things repeated more than 10 times
-	/*var count = 0;
+	console.log("this is repetition array" + repetitionArray);
+	// only include things repeated more than x times
 	for(z=0; z<repetitionArray.length; z++){
-		for(y=0; y<repetitionArray.length; y++){
-			var repeatedWord = repetitionArray[z];
-			if (repetitionArray[y] == repeatedWord) {
-				var count = count + 1;
-			}
-			if (count < 10){
-				repetitionArray.splice(y, 1);
-			}
-		}
-	}
-	console.log(repetitionArray); */
-	for(z=0; z<repetitionArray.length; z++){
-		var count = 0;
 		for (y=0; y<repetitionArray.length; y++){
-			if (repetitionArray[i] == repetitionArray[z]){
+			if (repetitionArray[y] == repetitionArray[z]){
 				var count = count + 1;
 			}
-		}
-		if (count < 4){
-			repetitionArray.splice(z, 1);
+			console.log("this is count " + count);
+			if (count < 4){
+				manyRepetitionArray.push(repetitionArray[y]);
+			}
 		}
 	}
-	console.log(repetitionArray);
+	console.log("this is repetition array with repetitions more than 4" + repetitionArray);
 	// take out repetitions from array
 	var uniqueRepetitionArray = Array.from(new Set(repetitionArray));
-	console.log(uniqueRepetitionArray);
+	console.log("this is repetition array wo repetition" + uniqueRepetitionArray);
 	// take out common words from array
 	var repetitionsToIgnore = ["a", "the", "of", "to", "and", "with", "as", "at"];
 	for(j=0; j<repetitionsToIgnore.length; j++){
@@ -229,7 +218,7 @@ for(i=0; i<cleanTextArray.length; i++){
 			uniqueRepetitionArray.splice(index, 1);
 		}
 	}
-	console.log(uniqueRepetitionArray);
+	console.log("this is repetition array wo common words" + uniqueRepetitionArray);
 	for(x=0; x<uniqueRepetitionArray.length; x++){
 		if (textArray[i] == uniqueRepetitionArray[x]){
 			textArray[i] = '<span class="redText">'+textArray[i]+'</span>';
