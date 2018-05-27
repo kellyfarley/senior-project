@@ -72,8 +72,19 @@ for (i=0; i<cleanTextArray.length; i++) {
 
 // naked this - maybe only highlight if followed by "shows"?
 for (i=0; i<cleanTextArray.length; i++) {
+	var presentTense = ["happen", "happens", "persists", "persist", "seem", "seems", "am", "are", "is", "have", "has", "says", "say", "makes", "make", "goes", "go", "takes", "take", "comes", "come", "sees", "see", "knows", "know", "finds", "find", "thinks", "think", "shows", "show", "says", "say", "tells", "tell", "becomes", "become", "leaves", "leave", "puts", "put", "brings", "bring", "begins", "begin", "keeps", "keep", "holds", "hold", "writes", "write", "stands", "stand", "hears", "hear", "lets", "let", "means", "mean", "sets", "set", "meets", "meet", "run", "runs", "understand", "understands", "buys", "buy", "dies", "die", "do", "does"];
+	var pastTense = ["happened", "persisted", "seemed", "was", "were", "had", "said", "made", "went", "took", "came", "saw", "knew", "got", "gave", "found", "thought", "told", "became", "showed", "left", "put", "brought", "began", "kept", "held", "wrote", "stood", "heard", "let", "meant", "set", "met", "run", "paid", "said", "understood", "bought", "worn", "died", "did"];
 	if (cleanTextArray[i] == "this") {
-    	textArray[i]= '<span class="lightGreenText">'+textArray[i]+'</span>';
+		for (j=0; j<presentTense.length; j++){
+			if (cleanTextArray[i+1] == presentTense[j]){
+				textArray[i]= '<span class="lightGreenText">'+textArray[i]+'</span>';
+			}
+		}
+		for (k=0; k<pastTense.length; k++){
+			if (cleanTextArray[i+1] == pastTense[k]){
+				textArray[i]= '<span class="lightGreenText">'+textArray[i]+'</span>';
+			}
+		}
   	}
 }
 
@@ -182,18 +193,23 @@ for (i=0; i<((cleanTextArray.length)-1); i++) {
 }
 
 // past tense (note: not applicable for history essays)
-for (i=0; i<((cleanTextArray.length)-1); i++) {
-	var pastTense = ["said", "made", "went", "took", "came", "saw", "knew", "got", "gave", "found", "thought", "told", "became", "showed", "left", "put", "brought", "began", "kept", "held", "wrote", "stood", "heard", "let", "meant", "set", "met", "run", "paid", "said", "understood", "bought", "worn", "died", "did"];
+for (i=0; i<cleanTextArray.length; i++) {
+	var pastTense = ["happened", "persisted", "seemed", "was", "were", "had", "said", "made", "went", "took", "came", "saw", "knew", "got", "gave", "found", "thought", "told", "became", "showed", "left", "put", "brought", "began", "kept", "held", "wrote", "stood", "heard", "let", "meant", "set", "met", "run", "paid", "said", "understood", "bought", "worn", "died", "did"];
 	for (x=0; x<pastTense.length; x++) {
-		// avoid double marking as passive voice AND past tense
-		if (cleanTextArray[i-1] != "were" && cleanTextArray[i-1] != "was" && cleanTextArray[i-1] != "had") {
 			if (cleanTextArray[i] == pastTense[x]) {
 	    		textArray[i]= '<span class="pinkText">'+textArray[i]+'</span>';
 	  		}
-	  	}
-  		/*if (cleanTextArray[i].indexOf("ed") != -1){
-  			textArray[i] = '<span class="pinkText">'+textArray[i]+'</span>';
-  		} */
+
+	}
+}
+
+// present tense (for history essays)
+for (i=0; i<cleanTextArray.length; i++) {
+	var presentTense = ["happen", "happens", "persists", "persist", "seem", "seems", "am", "are", "is", "have", "has", "says", "say", "makes", "make", "goes", "go", "takes", "take", "comes", "come", "sees", "see", "knows", "know", "finds", "find", "thinks", "think", "shows", "show", "says", "say", "tells", "tell", "becomes", "become", "leaves", "leave", "puts", "put", "brings", "bring", "begins", "begin", "keeps", "keep", "holds", "hold", "writes", "write", "stands", "stand", "hears", "hear", "lets", "let", "means", "mean", "sets", "set", "meets", "meet", "run", "runs", "understand", "understands", "buys", "buy", "dies", "die", "do", "does"];
+	for (x=0; x<presentTense.length; x++) {
+			if (cleanTextArray[i] == presentTense[x]) {
+	    		textArray[i]= '<span class="darkPinkText">'+textArray[i]+'</span>';
+	  		}
 	}
 }
 
@@ -453,6 +469,11 @@ $(".pinkText").hover(function() {
 $(".darkRedText").hover(function() {
 	$("#fillerExplanation").toggleClass("hidden");
 	$("#fillerTitle").toggleClass("hidden");
+});
+
+$(".darkPinkText").hover(function() {
+	$("#presentTenseExplanation").toggleClass("hidden");
+	$("#presentTenseTitle").toggleClass("hidden");
 });
 
 // repetition count
