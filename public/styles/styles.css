@@ -11,6 +11,7 @@ p{
   font-family: garamond;
   font-size: 15px;
   color: #003d99;
+  max-width: 80vw;
 }
 
 h2{
@@ -93,7 +94,7 @@ body{
 }
 
 .aquaText{
-  color:  #00ffff;
+  color: #00e6e6;
 }
 
 .lightBlueText{
