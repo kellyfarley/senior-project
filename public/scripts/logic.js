@@ -175,6 +175,7 @@ for (i=0; i<((cleanTextArray.length)-1); i++) {
 
 // repetition
 var repetitionArray = [];
+var newRepetitionArray = [];
 
 for(i=0; i<cleanTextArray.length; i++){
 	// if the first index isn't the same as the last index, must show up at least twice
@@ -196,15 +197,30 @@ for (i=0; i<repetitionArray.length; i++){
 		}
 	}
 	console.log("this is count " + count);
-	if (count < 4){
-		var index = repetitionArray.indexOf(repetitionArray[i]);
-		console.log("this is index " + index);
-		repetitionArray.splice(index, count);
+	if (count > 4){
+		newRepetitionArray.push(repetitionArray[i]);
+	}
+}
+console.log("new" + newRepetitionArray);
+// take out repetitions from array
+var uniqueRepetitionArray = Array.from(new Set(newRepetitionArray));
+var repetitionsToIgnore = ["a", "the", "of", "to", "and", "with", "as", "at"];
+	for(j=0; j<repetitionsToIgnore.length; j++){
+		var index = uniqueRepetitionArray.indexOf(repetitionsToIgnore[j]);
+		if (index != -1){
+			uniqueRepetitionArray.splice(index, 1);
+		}
+	}
+console.log(uniqueRepetitionArray);
+for (i=0; i<cleanTextArray.length; i++){
+	for (x=0; x<uniqueRepetitionArray.length; x++){
+		if (cleanTextArray[i] == uniqueRepetitionArray[x]){
+			textArray[i] = '<span class="redText">'+textArray[i]+'</span>';
+		}
 	}
 }
 
-console.log("new" + repetitionArray);
-
+/*
 for (i=0; i<repetitionArray.length; i++){
 	// take out repetitions from array
 	var uniqueRepetitionArray = Array.from(new Set(repetitionArray));
@@ -221,7 +237,7 @@ for (i=0; i<repetitionArray.length; i++){
 			textArray[i] = '<span class="redText">'+textArray[i]+'</span>';
 		}	
 	}
-}
+} */
 /*var repetitionArray = [];
 var manyRepetitionArray = [];
 
