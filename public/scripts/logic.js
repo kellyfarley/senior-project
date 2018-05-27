@@ -175,15 +175,52 @@ for (i=0; i<((cleanTextArray.length)-1); i++) {
 
 // repetition
 var repetitionArray = [];
-var count = 0;
+
+function countInArray(array, what){
+	var count = 0;
+	for(i=0; i<array.length; i++){
+		if (array[i] == what){
+			count ++;
+		}
+	}
+	return count;
+}
 
 for(i=0; i<cleanTextArray.length; i++){
 	// if the first index isn't the same as the last index, must show up at least twice
 	if (cleanTextArray.indexOf(cleanTextArray[i]) != cleanTextArray.lastIndexOf(cleanTextArray[i])){
 		repetitionArray.push(cleanTextArray[i]);
 	}
+	console.log(repetitionArray);
+	// make array with things repeated more than 10 times
+	/*var count = 0;
+	for(z=0; z<repetitionArray.length; z++){
+		for(y=0; y<repetitionArray.length; y++){
+			var repeatedWord = repetitionArray[z];
+			if (repetitionArray[y] == repeatedWord) {
+				var count = count + 1;
+			}
+			if (count < 10){
+				repetitionArray.splice(y, 1);
+			}
+		}
+	}
+	console.log(repetitionArray); */
+	for(z=0; z<repetitionArray.length; z++){
+		var count = 0;
+		for (y=0; y<repetitionArray.length; y++){
+			if (repetitionArray[i] == repetitionArray[z]){
+				var count = count + 1;
+			}
+		}
+		if (count < 4){
+			repetitionArray.splice(z, 1);
+		}
+	}
+	console.log(repetitionArray);
 	// take out repetitions from array
 	var uniqueRepetitionArray = Array.from(new Set(repetitionArray));
+	console.log(uniqueRepetitionArray);
 	// take out common words from array
 	var repetitionsToIgnore = ["a", "the", "of", "to", "and", "with", "as", "at"];
 	for(j=0; j<repetitionsToIgnore.length; j++){
@@ -192,27 +229,13 @@ for(i=0; i<cleanTextArray.length; i++){
 			uniqueRepetitionArray.splice(index, 1);
 		}
 	}
+	console.log(uniqueRepetitionArray);
 	for(x=0; x<uniqueRepetitionArray.length; x++){
 		if (textArray[i] == uniqueRepetitionArray[x]){
 			textArray[i] = '<span class="redText">'+textArray[i]+'</span>';
 		}	
 	}
-	// mark up words that are repeated
-	/*for(x=0; x<uniqueRepetitionArray.length; x++){
-		var repeatedWord = uniqueRepetitionArray[x];
-		var repeatedWord = repeatedWord.toLowerCase();
-		if (cleanTextArray[i] == repeatedWord) {
-				var count = count + 1;
-		}
-		if (count > 10){
-		textArray[i] = '<span class="redText">'+textArray[i]+'</span>';
-		}
-	}*/
 }
-console.log(repetitionArray);
-console.log(uniqueRepetitionArray);
-console.log(textArray);
-
 // could look into stemming if have time - remove ed, ing, ly - search for substrings?
 
 // sentences starting the same way
