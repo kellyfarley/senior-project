@@ -172,7 +172,7 @@ for (i=0; i<((cleanTextArray.length)-1); i++) {
   		} */
 	}
 }
-/*
+
 // repetition
 var repetitionArray = [];
 var count = 0;
@@ -198,7 +198,7 @@ for(i=0; i<cleanTextArray.length; i++){
 		}	
 	}
 	// mark up words that are repeated
-	for(x=0; x<uniqueRepetitionArray.length; x++){
+	/*for(x=0; x<uniqueRepetitionArray.length; x++){
 		var repeatedWord = uniqueRepetitionArray[x];
 		var repeatedWord = repeatedWord.toLowerCase();
 		if (cleanTextArray[i] == repeatedWord) {
@@ -207,11 +207,12 @@ for(i=0; i<cleanTextArray.length; i++){
 		if (count > 10){
 		textArray[i] = '<span class="redText">'+textArray[i]+'</span>';
 		}
-	}
+	}*/
 }
-/*console.log(repetitionArray);
+console.log(repetitionArray);
 console.log(uniqueRepetitionArray);
-console.log(textArray); */
+console.log(textArray);
+
 // could look into stemming if have time - remove ed, ing, ly - search for substrings?
 
 // sentences starting the same way
@@ -416,10 +417,8 @@ $(".redText").hover(function() {
 			var count = count + 1;
 		}
 	}
-	if (count>10){
-		$('#repetitionExplanation').html("You've used this word repeatedly - maybe try to change it up to avoid boring the reader. You've used this word "+count+" times.");
-		$("#repetitionExplanation").toggleClass("hidden");
-	}
+	$("#repetitionExplanation").html("You've used this word repeatedly - maybe try to change it up to avoid boring the reader. You've used this word "+count+" times.");
+	$("#repetitionExplanation").toggleClass("hidden");
 });
 
 // hover over repeated word
