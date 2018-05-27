@@ -22,7 +22,7 @@ for (i=0; i<cleanTextArray.length; i++) {
   var weakVerbs = ["get", "gets", "say", "says", "proves", "prove", "seem", "seems", "begin", "begins"];
   for (x=0; x<weakVerbs.length; x++) {
   	 if (cleanTextArray[i] == weakVerbs[x]) {
-    	textArray[i]= '<span class="redText">'+textArray[i]+'</span>';
+    	textArray[i]= '<span class="magentaText">'+textArray[i]+'</span>';
   	}
   }
 }
@@ -32,7 +32,7 @@ for (i=0; i<cleanTextArray.length; i++) {
 	var weakNouns = ["stuff", "thing", "things", "everyone", "everybody"];
 	for (x=0; x<weakNouns.length; x++) {
   	 if (cleanTextArray[i] == weakNouns[x]) {
-    	textArray[i]= '<span class="purple">'+textArray[i]+'</span>';
+    	textArray[i]= '<span class="aquaText">'+textArray[i]+'</span>';
   	}
   }
 }
@@ -42,7 +42,7 @@ for (i=0; i<cleanTextArray.length; i++) {
 	var adverbs = ["carefully", "very", "happily", "quickly", "really", "finally", "seriously", "always", "badly", "exactly", "basically", "actually", "literally", "clearly", "totally", "obviously", "truly", "constantly","specifically"];
 	for (x=0; x<adverbs.length; x++) {
   	 if (cleanTextArray[i] == adverbs[x]) {
-    	textArray[i]= '<span class="orange">'+textArray[i]+'</span>';
+    	textArray[i]= '<span class="orangeText">'+textArray[i]+'</span>';
   	}
   }
 }
@@ -50,23 +50,20 @@ for (i=0; i<cleanTextArray.length; i++) {
 // wrong word
 for (i=0; i<cleanTextArray.length; i++) {
 	if (cleanTextArray[i] == "loose") {
-		textArray[i]= '<span class="orange">'+lose+'</span>';
+		textArray[i]= '<span class="lightBlueText">'+lose+'</span>';
 	}
 	if (cleanTextArray[i] == "irregardless") {
-		textArray[i]= '<span class="orange">'+"regardless"+'</span>';
+		textArray[i]= '<span class="lightBlueText">'+"regardless"+'</span>';
 	}
 	if (cleanTextArray[i] == "noone") {
-		textArray[i]= '<span class="orange">'+"nobody"+'</span>';
-	}
-	if (cleanTextArray[i] == "like") {
-		textArray[i]= '<span class="orange">'+"such as"+'</span>';
+		textArray[i]= '<span class="lightBlueText">'+"nobody"+'</span>';
 	}
 }
 
 // naked this - maybe only highlight if followed by "shows"?
 for (i=0; i<cleanTextArray.length; i++) {
 	if (cleanTextArray[i] == "this") {
-    	textArray[i]= '<span class="yellow">'+textArray[i]+'</span>';
+    	textArray[i]= '<span class="lightGreenText">'+textArray[i]+'</span>';
   	}
 }
 
@@ -75,7 +72,7 @@ for (i=0; i<cleanTextArray.length; i++) {
 	var firstPerson = ["I", "me", "we", "our", "I'm", "I'll", "I'd", "we're", "we'd", "we'll"];
 	for (x=0; x<firstPerson.length; x++) {
   	 if (cleanTextArray[i] == firstPerson[x]) {
-    	textArray[i]= '<span class="orange">'+textArray[i]+'</span>';
+    	textArray[i]= '<span class="blueText">'+textArray[i]+'</span>';
   	}
   }
 }
@@ -85,7 +82,7 @@ for (i=0; i<cleanTextArray.length; i++) {
 	var secondPerson = ["you", "you're", "you'll", "you'd"];
 	for (x=0; x<secondPerson.length; x++) {
   	 if (cleanTextArray[i] == secondPerson[x]) {
-    	textArray[i]= '<span class="orange">'+textArray[i]+'</span>';
+    	textArray[i]= '<span class="darkGreenText">'+textArray[i]+'</span>';
   	}
   }
 }
@@ -94,7 +91,7 @@ for (i=0; i<cleanTextArray.length; i++) {
 function replaceContractions(contraction, replacement) {
 	for (i=0; i<cleanTextArray.length; i++) {
 		if (cleanTextArray[i] == contraction) {
-			textArray[i] = '<span class="red">'+replacement+'</span>';
+			textArray[i] = '<span class="yellowText">'+replacement+'</span>';
 		}
 	}
 }
@@ -135,13 +132,13 @@ replaceContractions("why'd", "why would");
 // passive voice - what about irregulars?
 
 // present passive voice
-for (i=0; i<cleanTextArray.length; i++) {
+for (i=0; i<((cleanTextArray.length)-1); i++) {
 	var presentPassiveVoice = ["is", "are", "has"];
 	for (x=0; x<presentPassiveVoice.length; x++) {
   	 if (cleanTextArray[i] == presentPassiveVoice[x]) {
     	if (cleanTextArray[i+1].indexOf("ing") != -1){
-    		textArray[i] = '<span class="orangeText">'+textArray[i]+'</span>';
-    		textArray[i+1] = '<span class="orangeText">'+textArray[i+1]+'</span>';
+    		textArray[i] = '<span class="purpleText">'+textArray[i]+'</span>';
+    		textArray[i+1] = '<span class="purpleText">'+textArray[i+1]+'</span>';
   	}
   }
 }
@@ -153,8 +150,8 @@ for (i=0; i<((cleanTextArray.length)-1); i++) {
 	for (x=0; x<presentPassiveVoice.length; x++) {
   	 if (cleanTextArray[i] == presentPassiveVoice[x]) {
     	if (cleanTextArray[i+1].indexOf("ed") != -1){
-    		textArray[i] = '<span class="orangeText">'+textArray[i]+'</span>';
-    		textArray[i+1] = '<span class="orangeText">'+textArray[i+1]+'</span>';
+    		textArray[i] = '<span class="purpleText">'+textArray[i]+'</span>';
+    		textArray[i+1] = '<span class="purpleText">'+textArray[i+1]+'</span>';
   	}
   }
 }
@@ -162,19 +159,23 @@ for (i=0; i<((cleanTextArray.length)-1); i++) {
 
 // past tense (note: not applicable for history essays)
 for (i=0; i<((cleanTextArray.length)-1); i++) {
-	var pastTense = ["said", "made", "went", "took", "came", "saw", "knew", "got", "gave", "found", "thought", "told", "became", "showed", "left", "put", "brought", "began", "kept", "held", "wrote", "stood", "heard", "let", "meant", "set", "met", "run", "paid", "said", "understood", "bought", "worn", "died", "was", "were", "did"];
+	var pastTense = ["said", "made", "went", "took", "came", "saw", "knew", "got", "gave", "found", "thought", "told", "became", "showed", "left", "put", "brought", "began", "kept", "held", "wrote", "stood", "heard", "let", "meant", "set", "met", "run", "paid", "said", "understood", "bought", "worn", "died", "did"];
 	for (x=0; x<pastTense.length; x++) {
-		if (cleanTextArray[i] == pastTense[x]) {
-    		textArray[i]= '<span class="orangeText">'+textArray[i]+'</span>';
-  		}
-  		if (cleanTextArray[i].indexOf("ed") != -1){
-  			textArray[i] = '<span class="orangeText">'+textArray[i]+'</span>';
-  		}
+		// avoid double marking as passive voice AND past tense
+		if (cleanTextArray[i-1] != "were" && cleanTextArray[i-1] != "was" && cleanTextArray[i-1] != "had") {
+			if (cleanTextArray[i] == pastTense[x]) {
+	    		textArray[i]= '<span class="pinkText">'+textArray[i]+'</span>';
+	  		}
+	  	}
+  		/*if (cleanTextArray[i].indexOf("ed") != -1){
+  			textArray[i] = '<span class="pinkText">'+textArray[i]+'</span>';
+  		} */
 	}
 }
-
+/*
 // repetition
 var repetitionArray = [];
+var count = 0;
 
 for(i=0; i<cleanTextArray.length; i++){
 	// if the first index isn't the same as the last index, must show up at least twice
@@ -185,19 +186,32 @@ for(i=0; i<cleanTextArray.length; i++){
 	var uniqueRepetitionArray = Array.from(new Set(repetitionArray));
 	// take out common words from array
 	var repetitionsToIgnore = ["a", "the", "of", "to", "and", "with", "as", "at"];
-	for(j=0; j<cleanTextArray.length; j++){
+	for(j=0; j<repetitionsToIgnore.length; j++){
 		var index = uniqueRepetitionArray.indexOf(repetitionsToIgnore[j]);
 		if (index != -1){
 			uniqueRepetitionArray.splice(index, 1);
 		}
 	}
+	for(x=0; x<uniqueRepetitionArray.length; x++){
+		if (textArray[i] == uniqueRepetitionArray[x]){
+			textArray[i] = '<span class="redText">'+textArray[i]+'</span>';
+		}	
+	}
 	// mark up words that are repeated
 	for(x=0; x<uniqueRepetitionArray.length; x++){
-		if (cleanTextArray[i] == uniqueRepetitionArray[x]) {
-				textArray[i] = '<span class="redText">'+textArray[i]+'</span>';
+		var repeatedWord = uniqueRepetitionArray[x];
+		var repeatedWord = repeatedWord.toLowerCase();
+		if (cleanTextArray[i] == repeatedWord) {
+				var count = count + 1;
+		}
+		if (count > 10){
+		textArray[i] = '<span class="redText">'+textArray[i]+'</span>';
 		}
 	}
-} 
+}
+/*console.log(repetitionArray);
+console.log(uniqueRepetitionArray);
+console.log(textArray); */
 // could look into stemming if have time - remove ed, ing, ly - search for substrings?
 
 // sentences starting the same way
@@ -205,7 +219,7 @@ for(i=0; i<cleanTextArray.length; i++){
 // sentence length variation (FIX LATER)
 
 // highlight very long or very short sentence (FIX LATER)
-var sentenceArray = text.split(".");
+/*var sentenceArray = text.split(".");
 sentenceArray.pop();
 
 var firstWordIndexArray = [];
@@ -226,7 +240,7 @@ for (i=0; i<sentenceArray.length; i++) {
 		}
 		var lastWord = sentenceArray[i][sentenceArray.length-1];
 	}
-}
+}*/
 		/*var lastWord = sentenceArray[i][sentenceArray.length-1];
 		var lastWordIndexArray = [];
 		for (i=0; i<cleanTextArray.length; i++) {
@@ -347,16 +361,53 @@ else if (individualSentenceArray.length < 5) {
 	} } */
 
 // replace html w/ marked up version
+console.log(textArray);
 $('#editedUserText').html(textArray.join(" "));
 
 
 // explanations
-$(".orange").click(function() {
-	$("#weakwordexplanation").toggleClass("hidden");
+$(".aquaText").hover(function() {
+	$("#vagueNounExplanation").toggleClass("hidden");
+});
+
+$(".orangeText").hover(function() {
+	$("#adverbExplanation").toggleClass("hidden");
+});
+
+$(".lightBlueText").hover(function() {
+	$("#misusedExplanation").toggleClass("hidden");
+});
+
+$(".lightGreenText").hover(function() {
+	$("#nakedThisExplanation").toggleClass("hidden");
+});
+
+$(".magentaText").hover(function() {
+	$("#weakVerbExplanation").toggleClass("hidden");
+});
+
+$(".blueText").hover(function() {
+	$("#firstPersonExplanation").toggleClass("hidden");
+});
+
+$(".darkGreenText").hover(function() {
+	$("#secondPersonExplanation").toggleClass("hidden");
+});
+
+$(".yellowText").hover(function() {
+	$("#contractionsExplanation").toggleClass("hidden");
+});
+
+$(".purpleText").hover(function() {
+	$("#passiveVoiceExplanation").toggleClass("hidden");
+});
+
+$(".pinkText").hover(function() {
+	$("#pastTenseExplanation").toggleClass("hidden");
 });
 
 // repetition count
-$(".redText").click(function() {
+$(".redText").hover(function() {
 	var count = 0;
 	var repeatedWord = $(event.target).text();
 	var repeatedWord = repeatedWord.toLowerCase();
@@ -365,16 +416,18 @@ $(".redText").click(function() {
 			var count = count + 1;
 		}
 	}
-	$('#repetitionExplanation').html("You've used this word repeatedly - maybe try to change it up to avoid boring the reader. You've used this word "+count+"times.");
-	$("#repetitionExplanation").toggleClass("hidden");
+	if (count>10){
+		$('#repetitionExplanation').html("You've used this word repeatedly - maybe try to change it up to avoid boring the reader. You've used this word "+count+" times.");
+		$("#repetitionExplanation").toggleClass("hidden");
+	}
 });
 
 // hover over repeated word
-$(".orangeText").hover(function(){
+/*$(".orangeText").hover(function(){
     $(this).css("background-color", "white");
     }, function(){
     $(this).css("background-color", "pink");
-});
+}); */
 
 // console.log($('#editedUserText span'));
 /*$('#editedUserText span').on("click", function(){
