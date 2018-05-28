@@ -1,3 +1,6 @@
+var teacher = $('#userTeacher').html();
+console.log(teacher);
+
 // take in user input
 var text = $('#originalUserText').html();
 
@@ -502,7 +505,7 @@ $(".darkPinkText").hover(function() {
 	$("#presentTenseTitle").toggleClass("hidden");
 });
 
-$("#submitButton").hover(function(){
+$("#by").hover(function(){
 	var text = document.getElementByName("userInput")[0].value;
 	console.log(userInput);
 });

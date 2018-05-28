@@ -46,9 +46,12 @@
 <li id="editForContractions"> Contractions </li>
 </ul>
 
-<h2> Please paste your essay below. </h2>
+<form action="/result" method="post" id="form", remote: true>
 
-<form method="post" action="/result" id="form", remote: true>
+<input type="radio" name="teacher" value="barker"> Ms. Barker </br>
+<input type="radio" name="teacher" value="greer"> Mr. Greer </br>
+
+<h2> Please paste your essay below. </h2>
 
 <textarea rows="20" cols="140" type="text" name="userInput"> Enter your writing here... </textarea>
 
@@ -57,5 +60,8 @@
 </form>
 
 </body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="/scripts/inputlogic.js"></script>
 
 </html>

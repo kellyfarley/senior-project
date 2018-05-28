@@ -19,5 +19,7 @@ post '/result' do
 	@avgWord = @letterCount / @wordCount
 	#average sentence length
 	@avgSentence = @wordCount / @sentenceCount
+	# for making it teacher specific
+	@teacher = params[:teacher]
 	erb :result
 end
