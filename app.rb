@@ -21,5 +21,18 @@ post '/result' do
 	@avgSentence = @wordCount / @sentenceCount
 	# for making it teacher specific
 	@teacher = params[:teacher]
+	#for making it skill specific
+	@repetitionSkill = params[:repetition]
+	@nakedThisSkill = params[:nakedThis]
+	@passiveVoiceSkill = params[:passiveVoice]
+	@pastTenseSkill = params[:pastTense]
+	@presentTenseSkill = params[:presentTense]
+	@firstPersonSkill = params[:firstPerson]
+	@secondPersonSkill = params[:secondPerson]
+	@adverbsSkill = params[:adverbs]
+	@weakSkill = params[:weak]
+	@fillerSkill = params[:filler]
+	@vagueNounSkill = params[:vagueNoun]
+	@contractionsSkill = params[:contractions]
 	erb :result
 end

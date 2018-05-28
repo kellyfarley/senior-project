@@ -2,12 +2,12 @@
 
 // reveal teacher options
 $("#editByTeacher").click(function(){
-	$("#byTeacher").toggleClass("hidden");
-	$("#teacherList").toggleClass("hidden");
+	$(".teacherList").show();
+	$(".skillList").hide();
 });
 
 // reveal skill options
 $("#editBySkill").click(function(){
-	$("#bySkill").toggleClass("hidden");
-	$("#skillList").toggleClass("hidden");
+	$(".skillList").show();
+	$(".teacherList").hide();
 });

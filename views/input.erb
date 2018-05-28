@@ -18,38 +18,35 @@
 
 <p id="editBySkill"> Skill </p>
 
-<h2 id="byTeacher" class="hidden"> By teacher: </h2>
-<ul class="hidden" id="teacherList">
-<li id="barker"> Ms. Barker </li>
-<li id="greer"> Mr. Greer </li>
-<li id="june"> Mr. June </li>
-<li id="landis"> Ms. Landis </li>
-<li id="lc"> Ms. L-C </li>
-<li id="marshall"> Mr. Marshall </li>
-<li id="stephens"> Ms. Stephens </li>
-<li id="tempone"> Mr. Tempone </li>
-</ul>
-
-<h2 id="bySkill" class="hidden"> By skill: </h2>
-<ul class="hidden" id="skillList">
-<li id="editForRepetition"> Repetition </li>
-<li id="editForNakedThis"> Naked this </li>
-<li id="editForPassiveVoice"> Passive voice </li>
-<li id="editForPastTense"> Past tense (for English essays) </li>
-<li id="editForPresentTense"> Present tense (for History essays) </li>
-<li id="editForFirstPerson"> First person </li>
-<li id="editForSecondPerson"> Second person </li>
-<li id="editForAdverbs"> Adverbs </li>
-<li id="editForWeak"> Weak word choice </li>
-<li id="editForFillers"> Filler words </li>
-<li id="editForVagueNouns"> Vague word choice </li>
-<li id="editForContractions"> Contractions </li>
-</ul>
-
 <form action="/result" method="post" id="form", remote: true>
 
+<div class="hidden teacherList">
+<h2> By teacher: </h2>
 <input type="radio" name="teacher" value="barker"> Ms. Barker </br>
 <input type="radio" name="teacher" value="greer"> Mr. Greer </br>
+<input type="radio" name="teacher" value="june"> Mr. June </br>
+<input type="radio" name="teacher" value="landis"> Ms. Landis </br>
+<input type="radio" name="teacher" value="lc"> Ms. L-C </br>
+<input type="radio" name="teacher" value="marshall"> Mr. Marshall </br>
+<input type="radio" name="teacher" value="stephens"> Ms. Stephens </br>
+<input type="radio" name="teacher" value="tempone"> Mr. Tempone </br>
+</div>
+
+<div class="hidden skillList">
+<h2> By skill: </h2>
+<input type=checkbox name="repetition" value="repetition"> Repetition </br>
+<input type=checkbox name="nakedThis" value="nakedThis"> Naked this </br>
+<input type=checkbox name="passiveVoice" value="passiveVoice"> Passive voice </br>
+<input type=checkbox name="pastTense" value="pastTense"> Past tense (for English essays) </br>
+<input type=checkbox name="presentTense" value="presentTense"> Present tense (for History esays) </br>
+<input type=checkbox name="firstPerson" value="firstPerson"> First person </br>
+<input type=checkbox name="secondPerson" value="secondPerson"> Second person </br>
+<input type=checkbox name="adverbs" value="adverbs"> Adverbs </br>
+<input type=checkbox name="weak" value="weak"> Weak word choice </br>
+<input type=checkbox name="filler" value="filler"> Filler words </br>
+<input type=checkbox name="vagueNoun" value="vagueNoun"> Vague word choices </br>
+<input type=checkbox name="contractions" value="contractions"> Contractions </br>
+</div>
 
 <h2> Please paste your essay below. </h2>
 
