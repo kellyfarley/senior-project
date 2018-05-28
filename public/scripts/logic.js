@@ -17,20 +17,25 @@ function initialize(){
 	var cleanTextArray = cleanText.split(" ");
 	var cleanTextArrayLength = cleanTextArray.length;
 	var cleanTextArray = cleanTextArray.slice(1, cleanTextArrayLength-1);
-	weak(cleanTextArray, textArray);
 }
 
+var weakWordSelection = 0;
+$("#editforWeak").click(function() {
+	weakWordSelection == 1;
+});
+console.log(weakWordSelection)
+
 // weak words
-function weak(cleanArray, originalArray){
-	for (i=0; i<cleanArray.length; i++) {
+if(weakWordSelection==1){
+	for (i=0; i<cleanTextArray.length; i++) {
 		var weak = ["almost", "slightly", "seem", "seems", "seemed", "perhaps", "maybe"];
 		for (x=0; x<weak.length; x++) {
-		  	if (cleanArray[i] == weak[x]) {
-		    	originalArray[i] = '<span class="magentaText">'+originalArray[i]+'</span>';
+		  	if (cleanTextArray[i] == weak[x]) {
+		    	textArray[i] = '<span class="magentaText">'+textArray[i]+'</span>';
 		    }
 	  	}
 	}
-	console.log(originalArray);
+	console.log("weak" + originalArray);
 }
 
 // vague nouns
