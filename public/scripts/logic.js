@@ -1,5 +1,150 @@
-var teacher = $('#userTeacher').html();
-console.log(teacher);
+// getting all the ruby variables
+var userTeacher = $('#userTeacher').html();
+var userRepetition = $('#userRepetition').html();
+var userNakedThis = $('#userNakedThis').html();
+var userPassiveVoice = $('#userPassiveVoice').html();
+var userPastTense = $('#userPastTense').html();
+var userPresentTense = $('#userPresentTense').html();
+var userFirstPerson = $('#userFirstPerson').html();
+var userSecondPerson = $('#userSecondPerson').html();
+var userAdverbs = $('#userAdverbs').html();
+var userWeak = $('#userWeak').html();
+var userFiller = $('#userFiller').html();
+var userVagueNoun = $('#userVagueNoun').html();
+var userContractions = $('#userContractions').html();
+
+// if var == "", then user DID NOT select it
+
+// if var == value assigned in form, then user DID select it
+
+// add count to skills that fit what the user has selected so that we can set up if/then statements
+var checkRepetition = 0;
+var checkNakedThis = 0;
+var checkPassiveVoice = 0;
+var checkPastTense = 0;
+var checkPresentTense = 0;
+var checkFirstPerson = 0;
+var checkSecondPerson = 0;
+var checkAdverbs = 0;
+var checkWeak = 0;
+var checkFiller = 0;
+var checkVagueNoun = 0;
+var checkContractions = 0;
+
+// by teacher
+if (userTeacher=="tempone"){
+	var checkPassiveVoice = 1;
+	var checkPastTense = 1;
+	// also check for word "truly"
+}
+
+if (userTeacher=="june"){
+	var checkPassiveVoice = 1;
+	var checkContractions = 1;
+	var checkSecondPerson = 1;
+	var checkFirstPerson = 1;
+	var checkPresentTense = 1;
+}
+
+if (userTeacher=="marshall"){
+	var checkNakedThis = 1;
+	var checkPassiveVoice = 1;
+	var checkPastTense = 1;
+	var checkRepetition = 1;
+	var checkVagueNoun = 1;
+}
+
+if (userTeacher=="stephens"){
+	var checkNakedThis = 1;
+	var checkPassiveVoice = 1;
+	var checkVagueNoun = 1;
+	var checkPresentTense = 1;
+}
+
+if (userTeacher=="landis"){
+	var checkNakedThis = 1;
+	var checkPassiveVoice = 1;
+	var checkRepetition = 1;
+	var checkContractions = 1;
+	var checkVagueNoun = 1;
+	var checkWeak = 1;
+	var checkSecondPerson = 1;
+}
+
+if (userTeacher=="greer"){
+	var checkNakedThis = 1;
+	var checkPassiveVoice = 1;
+	var checkRepetition = 1;
+	var checkVagueNoun = 1;
+}
+
+if (userTeacher=="lc"){
+	var checkNakedThis = 1;
+	var checkPassiveVoice = 1;
+	var checkPastTense = 1;
+	var checkVagueNoun = 1;
+	var checkSecondPerson = 1;
+	// using as instead of because
+}
+
+if (userTeacher=="barker"){
+	var checkNakedThis = 1;
+	var checkPassiveVoice = 1;
+	var checkAdverbs = 1;
+	var checkRepetition = 1;
+	var checkSecondPerson = 1;
+	var checkFirstPerson = 1;
+}
+
+// by skill
+
+if(userRepetition=="repetition"){
+	var checkRepetition = 1;
+}
+
+if(userNakedThis=="nakedThis"){
+	var checkNakedThis = 1;
+}
+
+if(userPassiveVoice=="passiveVoice"){
+	var checkPassiveVoice = 1;
+}
+
+if(userPastTense=="pastTense"){
+	var checkPastTense = 1;
+}
+
+if(userPresentTense=="presentTense"){
+	var checkPresentTense = 1;
+}
+
+if(userFirstPerson=="firstPerson"){
+	var checkFirstPerson = 1;
+}
+
+if(userSecondPerson=="secondPerson"){
+	var checkSecondPerson = 1;
+}
+
+if(userAdverbs="adverbs"){
+	var checkAdverbs = 1;
+}
+
+if(userWeak="weak"){
+	var checkWeak = 1;
+}
+
+if(userFiller="filler"){
+	var checkFiller = 1;
+}
+
+if(userVagueNoun=="vagueNoun"){
+	var checkVagueNoun = 1;
+}
+
+if(userContractions=="contractions"){
+	var checkContractions = 1;
+}
 
 // take in user input
 var text = $('#originalUserText').html();
@@ -23,7 +168,7 @@ var cleanTextArrayLength = cleanTextArray.length;
 var cleanTextArray = cleanTextArray.slice(1, cleanTextArrayLength-1);
 
 // weak words
-function weak(){
+if(checkWeak==1){
 	for (i=0; i<cleanTextArray.length; i++) {
 		var weak = ["almost", "slightly", "seem", "seems", "seemed", "perhaps", "maybe"];
 		for (x=0; x<weak.length; x++) {
@@ -35,7 +180,7 @@ function weak(){
 }
 
 // vague nouns
-function vagueNouns(){
+if(checkVagueNoun==1){
 	for (i=0; i<cleanTextArray.length; i++) {
 		var weakNouns = ["stuff", "thing", "things", "everyone", "everybody"];
 		for (x=0; x<weakNouns.length; x++) {
@@ -47,7 +192,7 @@ function vagueNouns(){
 }
 
 // adverbs
-function adverbs(){
+if(checkAdverbs==1){
 	for (i=0; i<cleanTextArray.length; i++) {
 		var adverbs = ["carefully", "absolutely", "very", "happily", "quickly", "really", "finally", "seriously", "always", "badly", "exactly", "basically", "actually", "literally", "clearly", "totally", "obviously", "truly", "constantly","specifically"];
 		for (x=0; x<adverbs.length; x++) {
@@ -59,7 +204,7 @@ function adverbs(){
 }
 
 // fillers
-function fillers(){
+if(checkFiller==1){
 	for (i=0; i<cleanTextArray.length; i++){
 		var fillers = ["that", "just", "only", "simply"];
 		for (x=0; x<adverbs.length; x++) {
@@ -71,22 +216,20 @@ function fillers(){
 }
 
 // wrong word
-function wrongWord(){
-	for (i=0; i<cleanTextArray.length; i++) {
-		if (cleanTextArray[i] == "loose") {
-			textArray[i]= '<span class="lightBlueText">'+lose+'</span>';
-		}
-		if (cleanTextArray[i] == "irregardless") {
-			textArray[i]= '<span class="lightBlueText">'+"regardless"+'</span>';
-		}
-		if (cleanTextArray[i] == "noone") {
-			textArray[i]= '<span class="lightBlueText">'+"nobody"+'</span>';
-		}
+for (i=0; i<cleanTextArray.length; i++) {
+	if (cleanTextArray[i] == "loose") {
+		textArray[i]= '<span class="lightBlueText">'+lose+'</span>';
+	}
+	if (cleanTextArray[i] == "irregardless") {
+		textArray[i]= '<span class="lightBlueText">'+"regardless"+'</span>';
+	}
+	if (cleanTextArray[i] == "noone") {
+		textArray[i]= '<span class="lightBlueText">'+"nobody"+'</span>';
 	}
 }
 
 // naked this - maybe only highlight if followed by "shows"?
-function nakedThis(){
+if(checkNakedThis==1){
 	for (i=0; i<cleanTextArray.length; i++) {
 		var presentTense = ["happen", "happens", "persists", "persist", "seem", "seems", "am", "are", "is", "have", "has", "says", "say", "makes", "make", "goes", "go", "takes", "take", "comes", "come", "sees", "see", "knows", "know", "finds", "find", "thinks", "think", "shows", "show", "says", "say", "tells", "tell", "becomes", "become", "leaves", "leave", "puts", "put", "brings", "bring", "begins", "begin", "keeps", "keep", "holds", "hold", "writes", "write", "stands", "stand", "hears", "hear", "lets", "let", "means", "mean", "sets", "set", "meets", "meet", "run", "runs", "understand", "understands", "buys", "buy", "dies", "die", "do", "does"];
 		var pastTense = ["happened", "persisted", "seemed", "was", "were", "had", "said", "made", "went", "took", "came", "saw", "knew", "got", "gave", "found", "thought", "told", "became", "showed", "left", "put", "brought", "began", "kept", "held", "wrote", "stood", "heard", "let", "meant", "set", "met", "run", "paid", "said", "understood", "bought", "worn", "died", "did"];
@@ -106,7 +249,7 @@ function nakedThis(){
 }
 
 // 1st person
-function firstPerson(){
+if(checkFirstPerson==1){
 	for (i=0; i<cleanTextArray.length; i++) {
 		var firstPerson = ["i", "me", "we", "our", "i'm", "i'll", "i'd", "we're", "we'd", "we'll", "my", "mine"];
 		for (x=0; x<firstPerson.length; x++) {
@@ -118,7 +261,7 @@ function firstPerson(){
 }
 
 // 2nd person
-function secondPerson(){
+if(checkSecondPerson==1){
 	for (i=0; i<cleanTextArray.length; i++) {
 		var secondPerson = ["you", "you're", "you'll", "you'd", "yours"];
 		for (x=0; x<secondPerson.length; x++) {
@@ -138,7 +281,7 @@ function contractions(contraction, replacement) {
 	}
 }
 
-function replaceContractions(){
+if(checkContractions==1){
 	contractions("can't", "cannot");
 	contractions("aren't", "are not");
 	contractions("could've", "could have");
@@ -176,7 +319,7 @@ function replaceContractions(){
 // passive voice
 
 // present passive voice
-function presentPassiveVoice(){
+if(checkPassiveVoice==1){
 	for (i=0; i<((cleanTextArray.length)-1); i++) {
 		var presentPassiveVoice = ["am", "are", "is", "have", "has"];
 		for (x=0; x<presentPassiveVoice.length; x++) {
@@ -199,7 +342,7 @@ function presentPassiveVoice(){
 
 
 // past passive voice
-function pastPassiveVoice(){
+if(checkPassiveVoice==1){
 	for (i=0; i<((cleanTextArray.length)-1); i++) {
 		var pastPassiveVoice = ["was", "were", "had"];
 		for (x=0; x<pastPassiveVoice.length; x++) {
@@ -221,7 +364,7 @@ function pastPassiveVoice(){
 }
 
 // past tense (for english essays)
-function pastTense(){
+if(checkPastTense==1){
 	for (i=0; i<cleanTextArray.length; i++) {
 		var pastTense = ["happened", "persisted", "seemed", "was", "were", "had", "said", "made", "went", "took", "came", "saw", "knew", "got", "gave", "found", "thought", "told", "became", "showed", "left", "put", "brought", "began", "kept", "held", "wrote", "stood", "heard", "let", "meant", "set", "met", "run", "paid", "said", "understood", "bought", "worn", "died", "did"];
 		for (x=0; x<pastTense.length; x++) {
@@ -234,7 +377,7 @@ function pastTense(){
 }
 
 // present tense (for history essays)
-function presentTense(){
+if(checkPresentTense==1){
 	for (i=0; i<cleanTextArray.length; i++) {
 		var presentTense = ["happen", "happens", "persists", "persist", "seem", "seems", "am", "are", "is", "have", "has", "says", "say", "makes", "make", "goes", "go", "takes", "take", "comes", "come", "sees", "see", "knows", "know", "finds", "find", "thinks", "think", "shows", "show", "says", "say", "tells", "tell", "becomes", "become", "leaves", "leave", "puts", "put", "brings", "bring", "begins", "begin", "keeps", "keep", "holds", "hold", "writes", "write", "stands", "stand", "hears", "hear", "lets", "let", "means", "mean", "sets", "set", "meets", "meet", "run", "runs", "understand", "understands", "buys", "buy", "dies", "die", "do", "does"];
 		for (x=0; x<presentTense.length; x++) {
@@ -246,7 +389,7 @@ function presentTense(){
 }
 
 // repetition
-function repetition(){
+if(checkRepetition==1){
 	var repetitionArray = [];
 	var newRepetitionArray = [];
 	// if the first index isn't the same as the last index, must show up at least twice
