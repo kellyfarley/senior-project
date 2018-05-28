@@ -57,6 +57,24 @@ function adverbs(){
 
 // fillers
 function fillers(){
+	// take in user input
+	var text = $('#originalUserText').html();
+
+	// convert into sentence array & take out blank spaces
+	var textArray = text.split(" ");
+	var textArrayLength = textArray.length;
+	var textArray = textArray.slice(1, textArrayLength-1);
+
+	// text array but without punctuation or caps
+	// first as string
+	var cleanText = text.toLowerCase();
+	var cleanText = cleanText.replace(/\./g, '');
+	var cleanText = cleanText.replace(/\,/g, '');
+	var cleanText = cleanText.replace(/\;/g, '');
+	//convert to array & take out blank spaces
+	var cleanTextArray = cleanText.split(" ");
+	var cleanTextArrayLength = cleanTextArray.length;
+	var cleanTextArray = cleanTextArray.slice(1, cleanTextArrayLength-1);
 	for (i=0; i<cleanTextArray.length; i++){
 		var fillers = ["that", "just", "only", "simply"];
 		for (x=0; x<adverbs.length; x++) {
@@ -127,7 +145,7 @@ function secondPerson(){
 }
 
 // find & replace contractions
-function replaceContractions(contraction, replacement) {
+function contractions(contraction, replacement) {
 	for (i=0; i<cleanTextArray.length; i++) {
 		if (cleanTextArray[i] == contraction) {
 			textArray[i] = '<span class="yellowText">'+replacement+'</span>';
@@ -135,39 +153,39 @@ function replaceContractions(contraction, replacement) {
 	}
 }
 
-function contractions(){
-	replaceContractions("can't", "cannot");
-	replaceContractions("aren't", "are not");
-	replaceContractions("could've", "could have");
-	replaceContractions("couldn't", "could not");
-	replaceContractions("didn't", "did not");
-	replaceContractions("doesn't", "does not");
-	replaceContractions("hasn't", "has not");
-	replaceContractions("haven't", "have not");
-	replaceContractions("how'd", "how did");
-	replaceContractions("how'll", "how will");
-	replaceContractions("it'd", "it would");
-	replaceContractions("it's", "it is");
-	replaceContractions("she's", "she is");
-	replaceContractions("he's", "he is");
-	replaceContractions("she'll", "she will");
-	replaceContractions("he'll", "he will");
-	replaceContractions("she'd", "she would");
-	replaceContractions("he'd", "he would");
-	replaceContractions("that'll", "that will");
-	replaceContractions("that's", "that is");
-	replaceContractions("they'd", "they would");
-	replaceContractions("they'll", "they will");
-	replaceContractions("they're", "they are");
-	replaceContractions("they've", "they have");
-	replaceContractions("wasn't", "was not");
-	replaceContractions("weren't", "were not");
-	replaceContractions("won't", "will not");
-	replaceContractions("would've", "would have");
-	replaceContractions("wouldn't", "would not");
-	replaceContractions("who'd", "who would");
-	replaceContractions("who'll", "who will");
-	replaceContractions("why'd", "why would");
+function replaceContractions(){
+	contractions("can't", "cannot");
+	contractions("aren't", "are not");
+	contractions("could've", "could have");
+	contractions("couldn't", "could not");
+	contractions("didn't", "did not");
+	contractions("doesn't", "does not");
+	contractions("hasn't", "has not");
+	contractions("haven't", "have not");
+	contractions("how'd", "how did");
+	contractions("how'll", "how will");
+	contractions("it'd", "it would");
+	contractions("it's", "it is");
+	contractions("she's", "she is");
+	contractions("he's", "he is");
+	contractions("she'll", "she will");
+	contractions("he'll", "he will");
+	contractions("she'd", "she would");
+	contractions("he'd", "he would");
+	contractions("that'll", "that will");
+	contractions("that's", "that is");
+	contractions("they'd", "they would");
+	contractions("they'll", "they will");
+	contractions("they're", "they are");
+	contractions("they've", "they have");
+	contractions("wasn't", "was not");
+	contractions("weren't", "were not");
+	contractions("won't", "will not");
+	contractions("would've", "would have");
+	contractions("wouldn't", "would not");
+	contractions("who'd", "who would");
+	contractions("who'll", "who will");
+	contractions("why'd", "why would");
 }
 
 // passive voice
@@ -441,6 +459,10 @@ function replace(){
 	console.log(textArray);
 	$('#editedUserText').html(textArray.join(" "));
 }
+
+// call all the functions
+fillers();
+replace();
 
 // explanations
 $(".aquaText").hover(function() {
