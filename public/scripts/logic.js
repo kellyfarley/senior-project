@@ -1,6 +1,6 @@
-function initialize(){
+/*
 	// take in user input
-	var text = $('#originalUserText').html();
+	//var text = document.getElementById("userInput").value;
 
 	// convert into sentence array & take out blank spaces
 	var textArray = text.split(" ");
@@ -17,7 +17,6 @@ function initialize(){
 	var cleanTextArray = cleanText.split(" ");
 	var cleanTextArrayLength = cleanTextArray.length;
 	var cleanTextArray = cleanTextArray.slice(1, cleanTextArrayLength-1);
-}
 
 var weakWordSelection = 0;
 $("#editforWeak").click(function() {
@@ -36,7 +35,7 @@ if(weakWordSelection==1){
 	  	}
 	}
 	console.log("weak" + originalArray);
-}
+} */
 
 // vague nouns
 function vagueNouns(){
@@ -450,7 +449,6 @@ function replace(){
 }
 
 // call all the functions
-initialize();
 
 // explanations
 $(".aquaText").hover(function() {
@@ -511,6 +509,11 @@ $(".darkRedText").hover(function() {
 $(".darkPinkText").hover(function() {
 	$("#presentTenseExplanation").toggleClass("hidden");
 	$("#presentTenseTitle").toggleClass("hidden");
+});
+
+$("#submitButton").hover(function(){
+	var text = document.getElementByName("userInput")[0].value;
+	console.log(userInput);
 });
 
 // repetition count
