@@ -17,18 +17,20 @@ function initialize(){
 	var cleanTextArray = cleanText.split(" ");
 	var cleanTextArrayLength = cleanTextArray.length;
 	var cleanTextArray = cleanTextArray.slice(1, cleanTextArrayLength-1);
+	weak(cleanTextArray, textArray);
 }
 
 // weak words
-function weak(){
-	for (i=0; i<cleanTextArray.length; i++) {
+function weak(cleanArray, originalArray){
+	for (i=0; i<cleanArray.length; i++) {
 		var weak = ["almost", "slightly", "seem", "seems", "seemed", "perhaps", "maybe"];
 		for (x=0; x<weak.length; x++) {
-		  	if (cleanTextArray[i] == weak[x]) {
-		    	textArray[i] = '<span class="magentaText">'+textArray[i]+'</span>';
+		  	if (cleanArray[i] == weak[x]) {
+		    	originalArray[i] = '<span class="magentaText">'+originalArray[i]+'</span>';
 		    }
 	  	}
 	}
+	console.log(originalArray);
 }
 
 // vague nouns
@@ -443,8 +445,7 @@ function replace(){
 }
 
 // call all the functions
-fillers();
-replace();
+initialize();
 
 // explanations
 $(".aquaText").hover(function() {
