@@ -1,17 +1,42 @@
-// getting all the ruby variables
+// getting all the ruby variables & removing white space from both ends
 var userTeacher = $('#userTeacher').html();
+var userTeacher = userTeacher.trim();
+
 var userRepetition = $('#userRepetition').html();
+var userRepetition = userRepetition.trim();
+
 var userNakedThis = $('#userNakedThis').html();
+var userNakedThis = userNakedThis.trim();
+
 var userPassiveVoice = $('#userPassiveVoice').html();
+var userPassiveVoice = userPassiveVoice.trim();
+
 var userPastTense = $('#userPastTense').html();
+var userPastTense = userPastTense.trim();
+
 var userPresentTense = $('#userPresentTense').html();
+var userPresentTense = userPresentTense.trim();
+
 var userFirstPerson = $('#userFirstPerson').html();
+var userFirstPerson = userFirstPerson.trim();
+
 var userSecondPerson = $('#userSecondPerson').html();
+var userSecondPerson = userSecondPerson.trim();
+
 var userAdverbs = $('#userAdverbs').html();
+var userAdverbs = userAdverbs.trim();
+
 var userWeak = $('#userWeak').html();
+var userWeak = userWeak.trim();
+
 var userFiller = $('#userFiller').html();
+var userFiller = userFiller.trim();
+
 var userVagueNoun = $('#userVagueNoun').html();
+var userVagueNoun = userVagueNoun.trim();
+
 var userContractions = $('#userContractions').html();
+var userVagueNoun = userVagueNoun.trim();
 
 // if var == "", then user DID NOT select it
 
@@ -97,7 +122,6 @@ if (userTeacher=="barker"){
 }
 
 // by skill
-
 if(userRepetition=="repetition"){
 	var checkRepetition = 1;
 }
@@ -587,6 +611,7 @@ else if (individualSentenceArray.length < 5) {
 
 // replace html w/ marked up version
 $('#editedUserText').html(textArray.join(" "));
+console.log(textArray);
 
 // call all the functions
 
@@ -651,10 +676,6 @@ $(".darkPinkText").hover(function() {
 	$("#presentTenseTitle").toggleClass("hidden");
 });
 
-$("#by").hover(function(){
-	var text = document.getElementByName("userInput")[0].value;
-	console.log(userInput);
-});
 
 // repetition count
 $(".redText").hover(function() {
