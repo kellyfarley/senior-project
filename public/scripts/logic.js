@@ -138,7 +138,11 @@ if (userTeacher=="lc"){
 	var checkPastTense = 1;
 	var checkVagueNoun = 1;
 	var checkSecondPerson = 1;
-	// using as instead of because
+	for(i=0; i<cleanTextArray.length; i++){
+		if (cleanTextArray[i] == "as"){
+			textArray[i] = '<span class="specialTextLC">'+textArray[i]+'</span>';
+		}
+	}
 }
 
 if (userTeacher=="barker"){
@@ -684,6 +688,15 @@ $(".darkPinkText").hover(function() {
 	$("#presentTenseTitle").toggleClass("hidden");
 });
 
+$(".specialText").hover(function() {
+	$("#specialTitle").toggleClass("hidden");
+	$("#specialExplanation").toggleClass("hidden");
+});
+
+$(".specialTextLC").hover(function(){
+	$("#specialTitle").toggleClass("hidden");
+	$("#specialExplanationLC").toggleClass("hidden");
+});
 
 // repetition count
 $(".redText").hover(function() {
