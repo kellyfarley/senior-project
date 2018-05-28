@@ -69,6 +69,11 @@ body{
 
 /* all the highlighting effects */
 
+.specialText{
+  font-size: 20px;
+  background-color: yellow;
+}
+
 .redText{
   color: #ff0000;
 }

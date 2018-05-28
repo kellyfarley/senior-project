@@ -1,3 +1,24 @@
+// take in user input
+var text = $('#originalUserText').html();
+
+// convert into sentence array & take out blank spaces
+var textArray = text.split(" ");
+var textArrayLength = textArray.length;
+var textArray = textArray.slice(1, textArrayLength-1);
+
+// text array but without punctuation or caps
+
+// first as string
+var cleanText = text.toLowerCase();
+var cleanText = cleanText.replace(/\./g, '');
+var cleanText = cleanText.replace(/\,/g, '');
+var cleanText = cleanText.replace(/\;/g, '');
+
+//convert to array & take out blank spaces
+var cleanTextArray = cleanText.split(" ");
+var cleanTextArrayLength = cleanTextArray.length;
+var cleanTextArray = cleanTextArray.slice(1, cleanTextArrayLength-1);
+
 // getting all the ruby variables & removing white space from both ends
 var userTeacher = $('#userTeacher').html();
 var userTeacher = userTeacher.trim();
@@ -60,7 +81,11 @@ var checkContractions = 0;
 if (userTeacher=="tempone"){
 	var checkPassiveVoice = 1;
 	var checkPastTense = 1;
-	// also check for word "truly"
+	for(i=0; i<cleanTextArray.length; i++){
+		if (cleanTextArray[i] == "truly"){
+			textArray[i] = '<span class="specialText">'+textArray[i]+'</span>';
+		}
+	}
 }
 
 if (userTeacher=="june"){
@@ -69,6 +94,10 @@ if (userTeacher=="june"){
 	var checkSecondPerson = 1;
 	var checkFirstPerson = 1;
 	var checkPresentTense = 1;
+}
+
+if (userTeacher=="gallagher"){
+	var checkVagueNoun = 1;
 }
 
 if (userTeacher=="marshall"){
@@ -170,27 +199,6 @@ if(userContractions=="contractions"){
 	var checkContractions = 1;
 }
 
-// take in user input
-var text = $('#originalUserText').html();
-
-// convert into sentence array & take out blank spaces
-var textArray = text.split(" ");
-var textArrayLength = textArray.length;
-var textArray = textArray.slice(1, textArrayLength-1);
-
-// text array but without punctuation or caps
-
-// first as string
-var cleanText = text.toLowerCase();
-var cleanText = cleanText.replace(/\./g, '');
-var cleanText = cleanText.replace(/\,/g, '');
-var cleanText = cleanText.replace(/\;/g, '');
-
-//convert to array & take out blank spaces
-var cleanTextArray = cleanText.split(" ");
-var cleanTextArrayLength = cleanTextArray.length;
-var cleanTextArray = cleanTextArray.slice(1, cleanTextArrayLength-1);
-
 // weak words
 if(checkWeak==1){
 	for (i=0; i<cleanTextArray.length; i++) {
@@ -218,7 +226,7 @@ if(checkVagueNoun==1){
 // adverbs
 if(checkAdverbs==1){
 	for (i=0; i<cleanTextArray.length; i++) {
-		var adverbs = ["carefully", "absolutely", "very", "happily", "quickly", "really", "finally", "seriously", "always", "badly", "exactly", "basically", "actually", "literally", "clearly", "totally", "obviously", "truly", "constantly","specifically"];
+		var adverbs = ["carefully", "absolutely", "very", "happily", "quickly", "really", "finally", "seriously", "always", "badly", "exactly", "basically", "actually", "literally", "clearly", "totally", "obviously", "constantly","specifically"];
 		for (x=0; x<adverbs.length; x++) {
 			if (cleanTextArray[i] == adverbs[x]) {
 	    		textArray[i]= '<span class="orangeText">'+textArray[i]+'</span>';
