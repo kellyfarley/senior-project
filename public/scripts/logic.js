@@ -1,31 +1,26 @@
-/*
-	// take in user input
-	//var text = document.getElementById("userInput").value;
+// take in user input
+var text = $('#originalUserText').html();
 
-	// convert into sentence array & take out blank spaces
-	var textArray = text.split(" ");
-	var textArrayLength = textArray.length;
-	var textArray = textArray.slice(1, textArrayLength-1);
+// convert into sentence array & take out blank spaces
+var textArray = text.split(" ");
+var textArrayLength = textArray.length;
+var textArray = textArray.slice(1, textArrayLength-1);
 
-	// text array but without punctuation or caps
-	// first as string
-	var cleanText = text.toLowerCase();
-	var cleanText = cleanText.replace(/\./g, '');
-	var cleanText = cleanText.replace(/\,/g, '');
-	var cleanText = cleanText.replace(/\;/g, '');
-	//convert to array & take out blank spaces
-	var cleanTextArray = cleanText.split(" ");
-	var cleanTextArrayLength = cleanTextArray.length;
-	var cleanTextArray = cleanTextArray.slice(1, cleanTextArrayLength-1);
+// text array but without punctuation or caps
 
-var weakWordSelection = 0;
-$("#editforWeak").click(function() {
-	weakWordSelection == 1;
-});
-console.log(weakWordSelection)
+// first as string
+var cleanText = text.toLowerCase();
+var cleanText = cleanText.replace(/\./g, '');
+var cleanText = cleanText.replace(/\,/g, '');
+var cleanText = cleanText.replace(/\;/g, '');
+
+//convert to array & take out blank spaces
+var cleanTextArray = cleanText.split(" ");
+var cleanTextArrayLength = cleanTextArray.length;
+var cleanTextArray = cleanTextArray.slice(1, cleanTextArrayLength-1);
 
 // weak words
-if(weakWordSelection==1){
+function weak(){
 	for (i=0; i<cleanTextArray.length; i++) {
 		var weak = ["almost", "slightly", "seem", "seems", "seemed", "perhaps", "maybe"];
 		for (x=0; x<weak.length; x++) {
@@ -34,8 +29,7 @@ if(weakWordSelection==1){
 		    }
 	  	}
 	}
-	console.log("weak" + originalArray);
-} */
+}
 
 // vague nouns
 function vagueNouns(){
@@ -443,10 +437,7 @@ else if (individualSentenceArray.length < 5) {
 	} } */
 
 // replace html w/ marked up version
-function replace(){
-	console.log(textArray);
-	$('#editedUserText').html(textArray.join(" "));
-}
+$('#editedUserText').html(textArray.join(" "));
 
 // call all the functions
 
@@ -581,3 +572,9 @@ $(".redText").hover(function() {
 
  	// whatever logic
  // });
+
+/* var weakWordSelection = 0;
+$("#editforWeak").click(function() {
+	weakWordSelection == 1;
+});
+console.log(weakWordSelection) */
