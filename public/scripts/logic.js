@@ -244,6 +244,9 @@ if(checkNakedThis==1){
 					textArray[i]= '<span class="lightGreenText">'+textArray[i]+'</span>';
 				}
 			}
+			if (textArray[i]=="this."){
+				textArray[i]= '<span class="lightGreenText">'+textArray[i]+'</span>';
+			}
 	  	}
 	}
 }
@@ -600,7 +603,7 @@ $(".orangeText").hover(function() {
 
 $(".lightBlueText").hover(function() {
 	$("#misusedExplanation").toggleClass("hidden");
-	$("#miusedTitle").toggleClass("hidden");
+	$("#misusedTitle").toggleClass("hidden");
 });
 
 $(".lightGreenText").hover(function() {
