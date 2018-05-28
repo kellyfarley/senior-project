@@ -57,24 +57,6 @@ function adverbs(){
 
 // fillers
 function fillers(){
-	// take in user input
-	var text = $('#originalUserText').html();
-
-	// convert into sentence array & take out blank spaces
-	var textArray = text.split(" ");
-	var textArrayLength = textArray.length;
-	var textArray = textArray.slice(1, textArrayLength-1);
-
-	// text array but without punctuation or caps
-	// first as string
-	var cleanText = text.toLowerCase();
-	var cleanText = cleanText.replace(/\./g, '');
-	var cleanText = cleanText.replace(/\,/g, '');
-	var cleanText = cleanText.replace(/\;/g, '');
-	//convert to array & take out blank spaces
-	var cleanTextArray = cleanText.split(" ");
-	var cleanTextArrayLength = cleanTextArray.length;
-	var cleanTextArray = cleanTextArray.slice(1, cleanTextArrayLength-1);
 	for (i=0; i<cleanTextArray.length; i++){
 		var fillers = ["that", "just", "only", "simply"];
 		for (x=0; x<adverbs.length; x++) {
