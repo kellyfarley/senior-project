@@ -457,7 +457,7 @@ if(checkRepetition==1){
 	// take out repetitions from array
 	var uniqueRepetitionArray = Array.from(new Set(newRepetitionArray));
 	// take out common words from array
-	var repetitionsToIgnore = ["a", "the", "of", "to", "and", "with", "as", "at", "for", "on", "it", "in", "there", "their", "is", "they", "i", "has", "be", "when", "not", "are", "that", "more", "this", "my", "was", "what", "about"];
+	var repetitionsToIgnore = ["he", "his", "she", "hers", "a", "the", "of", "to", "and", "with", "as", "at", "for", "on", "it", "in", "there", "their", "is", "they", "i", "has", "be", "when", "not", "are", "that", "more", "this", "my", "was", "what", "about"];
 		for(j=0; j<repetitionsToIgnore.length; j++){
 			var index = uniqueRepetitionArray.indexOf(repetitionsToIgnore[j]);
 			if (index != -1){
