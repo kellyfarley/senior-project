@@ -193,15 +193,15 @@ if(userSecondPerson=="secondPerson"){
 	var checkSecondPerson = 1;
 }
 
-if(userAdverbs="adverbs"){
+if(userAdverbs=="adverbs"){
 	var checkAdverbs = 1;
 }
 
-if(userWeak="weak"){
+if(userWeak=="weak"){
 	var checkWeak = 1;
 }
 
-if(userFiller="filler"){
+if(userFiller=="filler"){
 	var checkFiller = 1;
 }
 
@@ -243,7 +243,7 @@ if(checkRepetition==1){
 	// take out repetitions from array
 	var uniqueRepetitionArray = Array.from(new Set(newRepetitionArray));
 	// take out common words from array
-	var repetitionsToIgnore = ["he", "his", "she", "hers", "a", "the", "of", "to", "and", "with", "as", "at", "for", "on", "it", "in", "there", "their", "is", "they", "i", "has", "be", "when", "not", "are", "that", "more", "this", "my", "was", "what", "about"];
+	var repetitionsToIgnore = ["he", "his", "she", "hers", "a", "the", "of", "to", "and", "with", "as", "at", "for", "on", "it", "in", "there", "their", "is", "they", "i", "has", "be", "when", "not", "are", "that", "just", "only", "more", "this", "my", "was", "what", "about"];
 		for(j=0; j<repetitionsToIgnore.length; j++){
 			var index = uniqueRepetitionArray.indexOf(repetitionsToIgnore[j]);
 			if (index != -1){
@@ -371,10 +371,6 @@ if(checkPassiveVoice==1){
 		var presentPassiveVoice = ["am", "are", "is", "have", "has"];
 		for (x=0; x<presentPassiveVoice.length; x++) {
 			if (cleanTextArray[i] == presentPassiveVoice[x]) {
-	    		if (cleanTextArray[i+1].indexOf("ed") != -1){
-		    		textArray[i] = '<span class="purpleText">'+textArray[i]+'</span>';
-		    		textArray[i+1] = '<span class="purpleText">'+textArray[i+1]+'</span>';
-	  			}
 	  			var pastParticiple = ["beaten", "bent", "bitten", "blown", "broken", "chosen", "driven", "forgotten", "forgiven", "hidden", "held", "kept", "known", "led", "made", "said", "seen", "sold", "taught", "thought", "understood", "written", "kept", "taken", "given", "done", "being", "been"];
 	  			for (j=0; j<pastParticiple.length; j++){
 	  				if (textArray[i+1] == pastParticiple[j]) {
@@ -394,10 +390,6 @@ if(checkPassiveVoice==1){
 		var pastPassiveVoice = ["was", "were", "had"];
 		for (x=0; x<pastPassiveVoice.length; x++) {
 			if (cleanTextArray[i] == pastPassiveVoice[x]) {
-	    		if (cleanTextArray[i+1].indexOf("ed") != -1){
-		    		textArray[i] = '<span class="purpleText">'+textArray[i]+'</span>';
-		    		textArray[i+1] = '<span class="purpleText">'+textArray[i+1]+'</span>';
-	  			}
 	  			var pastParticiple = ["beaten", "bent", "bitten", "blown", "broken", "chosen", "driven", "forgotten", "forgiven", "hidden", "held", "kept", "known", "led", "made", "said", "seen", "sold", "taught", "thought", "understood", "written", "kept", "taken", "given", "done", "being", "been"];
 	  			for (j=0; j<pastParticiple.length; j++){
 	  				if (textArray[i+1] == pastParticiple[j]) {
