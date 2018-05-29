@@ -164,6 +164,41 @@ if (userTeacher=="barker"){
 	var checkFirstPerson = 1;
 }
 
+if(userTeacher=="cruz"){
+	var checkPassiveVoice = 1;
+	var checkAdverbs = 1;
+	var checkRepetition;
+	var checkVagueNoun = 1;
+	var checkFirstPerson = 1;
+}
+
+if(userTeacher=="diorio"){
+	var checkNakedThis = 1;
+	var checkPassiveVoice = 1;
+	var checkPastTense = 1;
+	var checkRepetition = 1;
+	var checkVagueNoun = 1;
+	var checkWeak = 1;
+	var checkFirstPerson = 1;
+}
+
+if(userTeacher=="mcglinn"){
+	var checkNakedThis = 1;
+	var checkPassiveVoice = 1;
+	var checkPastTense = 1;
+	var checkAdverbs = 1;
+	var checkRepetition = 1; 
+	var checkVagueNoun = 1;
+	var checkWeak = 1;
+}
+
+if(userTeacher=="joyce"){
+	var checkNakedThis = 1;
+	var checkPassiveVoice = 1;
+	var checkRepetition = 1;
+	var checkVagueNoun = 1;
+}
+
 // by skill 
 if(userRepetition=="repetition"){
 	var checkRepetition = 1;
