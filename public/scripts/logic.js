@@ -143,7 +143,7 @@ if (userTeacher=="lc"){
 	}
 }
 
-if (userTeacher="bhen"){
+if (userTeacher=="bhen"){
 	var checkNakedThis = 1;
 	var checkPassiveVoice = 1;
 	var checkVagueNoun = 1;
