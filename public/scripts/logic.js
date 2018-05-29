@@ -164,6 +164,8 @@ if (userTeacher=="barker"){
 	var checkFirstPerson = 1;
 }
 
+console.log(checkFiller);
+
 // by skill 
 if(userRepetition=="repetition"){
 	var checkRepetition = 1;
