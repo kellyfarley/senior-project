@@ -4,20 +4,18 @@ var text = $('#originalUserText').html();
 // convert into sentence array & take out blank spaces
 var textArray = text.split(" ");
 var textArrayLength = textArray.length;
-var textArray = textArray.slice(1, textArrayLength-1);
+var textArray = textArray.slice(2, textArrayLength-1);
 
 // text array but without punctuation or caps
-
 // first as string
 var cleanText = text.toLowerCase();
 var cleanText = cleanText.replace(/\./g, '');
 var cleanText = cleanText.replace(/\,/g, '');
 var cleanText = cleanText.replace(/\;/g, '');
-
 //convert to array & take out blank spaces
 var cleanTextArray = cleanText.split(" ");
 var cleanTextArrayLength = cleanTextArray.length;
-var cleanTextArray = cleanTextArray.slice(1, cleanTextArrayLength-1);
+var cleanTextArray = cleanTextArray.slice(2, cleanTextArrayLength-1);
 
 // getting all the ruby variables & removing white space from both ends
 var userTeacher = $('#userTeacher').html();
@@ -63,7 +61,7 @@ var userVagueNoun = userVagueNoun.trim();
 
 // if var == value assigned in form, then user DID select it
 
-// add count to skills that fit what the user has selected so that we can set up if/then statements
+// add count to skills that fit what the user has selected (to be used in if/then statements later)
 var checkRepetition = 0;
 var checkNakedThis = 0;
 var checkPassiveVoice = 0;
@@ -77,7 +75,7 @@ var checkFiller = 0;
 var checkVagueNoun = 0;
 var checkContractions = 0;
 
-// by teacher
+// by teacher - add counts to teacher according to survey response
 if (userTeacher=="tempone"){
 	var checkPassiveVoice = 1;
 	var checkPastTense = 1;
@@ -145,6 +143,18 @@ if (userTeacher=="lc"){
 	}
 }
 
+if (userTeacher="bhen"){
+	var checkNakedThis = 1;
+	var checkPassiveVoice = 1;
+	var checkVagueNoun = 1;
+	var checkFirstPerson = 1;
+	for(i=0; i<cleanTextArray.length; i++){
+		if (cleanTextArray[i] == "very"){
+				textArray[i] = '<span class="specialText">'+textArray[i]+'</span>';
+		}
+	}
+}
+
 if (userTeacher=="barker"){
 	var checkNakedThis = 1;
 	var checkPassiveVoice = 1;
@@ -154,7 +164,7 @@ if (userTeacher=="barker"){
 	var checkFirstPerson = 1;
 }
 
-// by skill
+// by skill 
 if(userRepetition=="repetition"){
 	var checkRepetition = 1;
 }
@@ -203,112 +213,62 @@ if(userContractions=="contractions"){
 	var checkContractions = 1;
 }
 
-// weak words
-if(checkWeak==1){
-	for (i=0; i<cleanTextArray.length; i++) {
-		var weak = ["almost", "slightly", "seem", "seems", "seemed", "perhaps", "maybe"];
-		for (x=0; x<weak.length; x++) {
-		  	if (cleanTextArray[i] == weak[x]) {
-		    	textArray[i] = '<span class="magentaText">'+textArray[i]+'</span>';
-		    }
-	  	}
+// repetition
+if(checkRepetition==1){
+	var repetitionArray = [];
+	var newRepetitionArray = [];
+	// if the first index isn't the same as the last index, must show up at least twice
+	for(i=0; i<cleanTextArray.length; i++){
+		if (cleanTextArray.indexOf(cleanTextArray[i]) != cleanTextArray.lastIndexOf(cleanTextArray[i])){
+			repetitionArray.push(cleanTextArray[i]);
+		}
 	}
-}
-
-// vague nouns
-if(checkVagueNoun==1){
-	for (i=0; i<cleanTextArray.length; i++) {
-		var weakNouns = ["stuff", "thing", "things", "everyone", "everybody"];
-		for (x=0; x<weakNouns.length; x++) {
-			if (cleanTextArray[i] == weakNouns[x]) {
-	    		textArray[i]= '<span class="aquaText">'+textArray[i]+'</span>';
-	  		}
-	  	}
+	// sort repetition array alphabetically
+	var repetitionArray = repetitionArray.sort();
+	// set max repetition proportional to word count
+	var wordCount = textArray.length;
+	var maxRepetition = wordCount * 0.01;
+	// go through repetition array to count how many times repeated
+	for (i=0; i<repetitionArray.length; i++){
+		var count = 0;
+		for (z=0; z<repetitionArray.length; z++){
+			if (repetitionArray[i] == repetitionArray[z]){
+				var count = count + 1;
+			}
+		}
+		if (count > maxRepetition){
+			newRepetitionArray.push(repetitionArray[i]);
+		}
 	}
-}
-
-// adverbs
-if(checkAdverbs==1){
-	for (i=0; i<cleanTextArray.length; i++) {
-		var adverbs = ["carefully", "absolutely", "very", "happily", "quickly", "really", "finally", "seriously", "always", "badly", "exactly", "basically", "actually", "literally", "clearly", "totally", "obviously", "constantly","specifically"];
-		for (x=0; x<adverbs.length; x++) {
-			if (cleanTextArray[i] == adverbs[x]) {
-	    		textArray[i]= '<span class="orangeText">'+textArray[i]+'</span>';
-	  		}
-	  	}
-	}
-}
-
-// fillers
-if(checkFiller==1){
+	// take out repetitions from array
+	var uniqueRepetitionArray = Array.from(new Set(newRepetitionArray));
+	// take out common words from array
+	var repetitionsToIgnore = ["he", "his", "she", "hers", "a", "the", "of", "to", "and", "with", "as", "at", "for", "on", "it", "in", "there", "their", "is", "they", "i", "has", "be", "when", "not", "are", "that", "more", "this", "my", "was", "what", "about"];
+		for(j=0; j<repetitionsToIgnore.length; j++){
+			var index = uniqueRepetitionArray.indexOf(repetitionsToIgnore[j]);
+			if (index != -1){
+				uniqueRepetitionArray.splice(index, 1);
+			}
+		}
+	// add class to repeated words
 	for (i=0; i<cleanTextArray.length; i++){
-		var fillers = ["that", "just", "only", "simply"];
-		for (x=0; x<adverbs.length; x++) {
-			if (cleanTextArray[i] == fillers[x]) {
-	    		textArray[i]= '<span class="darkRedText">'+textArray[i]+'</span>';
-	  		}
-	  	}
+		for (x=0; x<uniqueRepetitionArray.length; x++){
+			if (cleanTextArray[i] == uniqueRepetitionArray[x]){
+				textArray[i] = '<span class="redText">'+textArray[i]+'</span>';
+			}
+		}
 	}
+	// could look into stemming if have time - remove ed, ing, ly - search for substrings?
 }
 
 // wrong word
 for (i=0; i<cleanTextArray.length; i++) {
-	if (cleanTextArray[i] == "loose") {
-		textArray[i]= '<span class="lightBlueText">'+lose+'</span>';
-	}
 	if (cleanTextArray[i] == "irregardless") {
 		textArray[i]= '<span class="lightBlueText">'+"regardless"+'</span>';
 	}
 	if (cleanTextArray[i] == "noone") {
 		textArray[i]= '<span class="lightBlueText">'+"nobody"+'</span>';
 	}
-}
-
-// naked this - maybe only highlight if followed by "shows"?
-if(checkNakedThis==1){
-	for (i=0; i<cleanTextArray.length; i++) {
-		var presentTense = ["happen", "happens", "persists", "persist", "seem", "seems", "am", "are", "is", "have", "has", "says", "say", "makes", "make", "goes", "go", "takes", "take", "comes", "come", "sees", "see", "knows", "know", "finds", "find", "thinks", "think", "shows", "show", "says", "say", "tells", "tell", "becomes", "become", "leaves", "leave", "puts", "put", "brings", "bring", "begins", "begin", "keeps", "keep", "holds", "hold", "writes", "write", "stands", "stand", "hears", "hear", "lets", "let", "means", "mean", "sets", "set", "meets", "meet", "run", "runs", "understand", "understands", "buys", "buy", "dies", "die", "do", "does"];
-		var pastTense = ["happened", "persisted", "seemed", "was", "were", "had", "said", "made", "went", "took", "came", "saw", "knew", "got", "gave", "found", "thought", "told", "became", "showed", "left", "put", "brought", "began", "kept", "held", "wrote", "stood", "heard", "let", "meant", "set", "met", "run", "paid", "said", "understood", "bought", "worn", "died", "did"];
-		if (cleanTextArray[i] == "this") {
-			for (j=0; j<presentTense.length; j++){
-				if (cleanTextArray[i+1] == presentTense[j]){
-					textArray[i]= '<span class="lightGreenText">'+textArray[i]+'</span>';
-				}
-			}
-			for (k=0; k<pastTense.length; k++){
-				if (cleanTextArray[i+1] == pastTense[k]){
-					textArray[i]= '<span class="lightGreenText">'+textArray[i]+'</span>';
-				}
-			}
-			if (textArray[i]=="this."){
-				textArray[i]= '<span class="lightGreenText">'+textArray[i]+'</span>';
-			}
-	  	}
-	}
-}
-
-// 1st person
-if(checkFirstPerson==1){
-	for (i=0; i<cleanTextArray.length; i++) {
-		var firstPerson = ["i", "me", "we", "our", "i'm", "i'll", "i'd", "we're", "we'd", "we'll", "my", "mine"];
-		for (x=0; x<firstPerson.length; x++) {
-			if (cleanTextArray[i] == firstPerson[x]) {
-	    		textArray[i]= '<span class="blueText">'+textArray[i]+'</span>';
-	  		}
-	  	}
-	}	
-}
-
-// 2nd person
-if(checkSecondPerson==1){
-	for (i=0; i<cleanTextArray.length; i++) {
-		var secondPerson = ["you", "you're", "you'll", "you'd", "yours"];
-		for (x=0; x<secondPerson.length; x++) {
-			if (cleanTextArray[i] == secondPerson[x]) {
-	    		textArray[i]= '<span class="darkGreenText">'+textArray[i]+'</span>';
-	  		}
-	  	}
-	}	
 }
 
 // find & replace contractions
@@ -353,6 +313,54 @@ if(checkContractions==1){
 	contractions("who'd", "who would");
 	contractions("who'll", "who will");
 	contractions("why'd", "why would");
+}
+
+// fillers
+if(checkFiller==1){
+	for (i=0; i<cleanTextArray.length; i++){
+		var fillers = ["that", "just", "only", "simply"];
+		for (x=0; x<fillers.length; x++) {
+			if (cleanTextArray[i] == fillers[x]) {
+	    		textArray[i]= '<span class="darkRedText">'+textArray[i]+'</span>';
+	  		}
+	  	}
+	}
+}
+
+// weak words
+if(checkWeak==1){
+	for (i=0; i<cleanTextArray.length; i++) {
+		var weak = ["almost", "slightly", "seem", "seems", "seemed", "perhaps", "maybe"];
+		for (x=0; x<weak.length; x++) {
+		  	if (cleanTextArray[i] == weak[x]) {
+		    	textArray[i] = '<span class="magentaText">'+textArray[i]+'</span>';
+		    }
+	  	}
+	}
+}
+
+// adverbs
+if(checkAdverbs==1){
+	for (i=0; i<cleanTextArray.length; i++) {
+		var adverbs = ["carefully", "absolutely", "happily", "quickly", "really", "finally", "seriously", "always", "badly", "exactly", "basically", "actually", "literally", "clearly", "totally", "obviously", "constantly","specifically"];
+		for (x=0; x<adverbs.length; x++) {
+			if (cleanTextArray[i] == adverbs[x]) {
+	    		textArray[i]= '<span class="orangeText">'+textArray[i]+'</span>';
+	  		}
+	  	}
+	}
+}
+
+// vague nouns
+if(checkVagueNoun==1){
+	for (i=0; i<cleanTextArray.length; i++) {
+		var weakNouns = ["stuff", "thing", "things", "everyone", "everybody"];
+		for (x=0; x<weakNouns.length; x++) {
+			if (cleanTextArray[i] == weakNouns[x]) {
+	    		textArray[i]= '<span class="aquaText">'+textArray[i]+'</span>';
+	  		}
+	  	}
+	}
 }
 
 // passive voice
@@ -427,52 +435,52 @@ if(checkPresentTense==1){
 	}
 }
 
-// repetition
-if(checkRepetition==1){
-	var repetitionArray = [];
-	var newRepetitionArray = [];
-	// if the first index isn't the same as the last index, must show up at least twice
-	for(i=0; i<cleanTextArray.length; i++){
-		if (cleanTextArray.indexOf(cleanTextArray[i]) != cleanTextArray.lastIndexOf(cleanTextArray[i])){
-			repetitionArray.push(cleanTextArray[i]);
-		}
-	}
-	// sort repetition array alphabetically
-	var repetitionArray = repetitionArray.sort();
-	// set max repetition proportional to word count
-	var wordCount = textArray.length;
-	var maxRepetition = wordCount * 0.01;
-	// go through repetition array to count how many times repeated
-	for (i=0; i<repetitionArray.length; i++){
-		var count = 0;
-		for (z=0; z<repetitionArray.length; z++){
-			if (repetitionArray[i] == repetitionArray[z]){
-				var count = count + 1;
+// 1st person
+if(checkFirstPerson==1){
+	for (i=0; i<cleanTextArray.length; i++) {
+		var firstPerson = ["i", "me", "we", "our", "i'm", "i'll", "i'd", "we're", "we'd", "we'll", "my", "mine"];
+		for (x=0; x<firstPerson.length; x++) {
+			if (cleanTextArray[i] == firstPerson[x]) {
+	    		textArray[i]= '<span class="blueText">'+textArray[i]+'</span>';
+	  		}
+	  	}
+	}	
+}
+
+// 2nd person
+if(checkSecondPerson==1){
+	for (i=0; i<cleanTextArray.length; i++) {
+		var secondPerson = ["you", "you're", "you'll", "you'd", "yours"];
+		for (x=0; x<secondPerson.length; x++) {
+			if (cleanTextArray[i] == secondPerson[x]) {
+	    		textArray[i]= '<span class="darkGreenText">'+textArray[i]+'</span>';
+	  		}
+	  	}
+	}	
+}
+
+// naked this - check to see if followed by verb instead of by noun
+if(checkNakedThis==1){
+	for (i=0; i<cleanTextArray.length; i++) {
+		var presentTense = ["happen", "happens", "persists", "persist", "seem", "seems", "am", "are", "is", "have", "has", "says", "say", "makes", "make", "goes", "go", "takes", "take", "comes", "come", "sees", "see", "knows", "know", "finds", "find", "thinks", "think", "shows", "show", "says", "say", "tells", "tell", "becomes", "become", "leaves", "leave", "puts", "put", "brings", "bring", "begins", "begin", "keeps", "keep", "holds", "hold", "writes", "write", "stands", "stand", "hears", "hear", "lets", "let", "means", "mean", "sets", "set", "meets", "meet", "run", "runs", "understand", "understands", "buys", "buy", "dies", "die", "do", "does"];
+		var pastTense = ["happened", "persisted", "seemed", "was", "were", "had", "said", "made", "went", "took", "came", "saw", "knew", "got", "gave", "found", "thought", "told", "became", "showed", "left", "put", "brought", "began", "kept", "held", "wrote", "stood", "heard", "let", "meant", "set", "met", "run", "paid", "said", "understood", "bought", "worn", "died", "did"];
+		if (cleanTextArray[i] == "this") {
+			for (j=0; j<presentTense.length; j++){
+				if (cleanTextArray[i+1] == presentTense[j]){
+					textArray[i]= '<span class="lightGreenText">'+textArray[i]+'</span>';
+				}
 			}
-		}
-		if (count > maxRepetition){
-			newRepetitionArray.push(repetitionArray[i]);
-		}
-	}
-	// take out repetitions from array
-	var uniqueRepetitionArray = Array.from(new Set(newRepetitionArray));
-	// take out common words from array
-	var repetitionsToIgnore = ["he", "his", "she", "hers", "a", "the", "of", "to", "and", "with", "as", "at", "for", "on", "it", "in", "there", "their", "is", "they", "i", "has", "be", "when", "not", "are", "that", "more", "this", "my", "was", "what", "about"];
-		for(j=0; j<repetitionsToIgnore.length; j++){
-			var index = uniqueRepetitionArray.indexOf(repetitionsToIgnore[j]);
-			if (index != -1){
-				uniqueRepetitionArray.splice(index, 1);
+			for (k=0; k<pastTense.length; k++){
+				if (cleanTextArray[i+1] == pastTense[k]){
+					textArray[i]= '<span class="lightGreenText">'+textArray[i]+'</span>';
+				}
 			}
-		}
-	// add class to repeated words
-	for (i=0; i<cleanTextArray.length; i++){
-		for (x=0; x<uniqueRepetitionArray.length; x++){
-			if (cleanTextArray[i] == uniqueRepetitionArray[x]){
-				textArray[i] = '<span class="redText">'+textArray[i]+'</span>';
+			// in case "this" ends a sentence
+			if (textArray[i]=="this."){
+				textArray[i]= '<span class="lightGreenText">'+textArray[i]+'</span>';
 			}
-		}
+	  	}
 	}
-	// could look into stemming if have time - remove ed, ing, ly - search for substrings?
 }
 
 // sentences starting the same way
@@ -625,8 +633,6 @@ else if (individualSentenceArray.length < 5) {
 $('#editedUserText').html(textArray.join(" "));
 console.log(textArray);
 
-// call all the functions
-
 // explanations
 $(".aquaText").hover(function() {
 	$("#vagueNounExplanation").toggleClass("hidden");
@@ -719,18 +725,6 @@ $(".redText").hover(function() {
 	$("#repetitionTitle").toggleClass("hidden");
 });
 
-// hover over repeated word
-/*$(".orangeText").hover(function(){
-    $(this).css("background-color", "white");
-    }, function(){
-    $(this).css("background-color", "pink");
-}); */
-
-// console.log($('#editedUserText span'));
-/*$('#editedUserText span').on("click", function(){
-	console.log(this);
-}); */
-
 // if have time: weak phrases
 // makes a decision --> decides
 // comes to the conclusion --> concludes
@@ -739,33 +733,6 @@ $(".redText").hover(function() {
 // chooses to
 // decides to
 // goes so far as to say
-// throughout history
+// throughout history (bhen)
+// in conclusion (bhen)
 // this shows
-/* for (i=0; i<cleanTextArray.length; i++){
-	var badPhrases = [["makes", "the", "decision"], ["comes", "to", "the", "conclusion"], ["gives", "the", "warning"], ["there", "is"], ["there", "are"], ["chooses", "to"], ["decides", "to"], ["goes", "so", "far", "as", "to", "say"], ["throughout", "history"], ["this", "shows"]];
-	for (x=0; x<badPhrases.length; x++) {
-		if (cleanTextArray[i] = badPhrases[x][0]) {
-			for (k=0; k<badPhrases[x].length; k++){
-				if cleanTextArray
-			}
-		}
-		//if (textArray[i] = badPhrases[0][x]) {
-
-		//}
-  	 //if (cleanTextArray[i] == badPhrases[x][1]) 
-    	//textArray[i]= '<span class="orange">'+textArray[i]+'</span>';
-  	//}
-  }
- } */
-
- // $('form button').on('click', function(event){
- 	// event.preventDefault();
-
- 	// whatever logic
- // });
-
-/* var weakWordSelection = 0;
-$("#editforWeak").click(function() {
-	weakWordSelection == 1;
-});
-console.log(weakWordSelection) */

@@ -19,9 +19,9 @@ post '/result' do
 	@avgWord = @letterCount / @wordCount
 	#average sentence length
 	@avgSentence = @wordCount / @sentenceCount
-	# for making it teacher specific
+	#for using form data & making it teacher specific
 	@teacher = params[:teacher]
-	#for making it skill specific
+	#for using form data & making it skill specific
 	@repetitionSkill = params[:repetition]
 	@nakedThisSkill = params[:nakedThis]
 	@passiveVoiceSkill = params[:passiveVoice]

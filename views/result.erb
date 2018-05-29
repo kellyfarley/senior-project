@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title> The Write Idea - Results </title>
-	<link rel="stylesheet" type="text/css" href="/styles/styles.css?v=3">
+	<link rel="stylesheet" type="text/css" href="/styles/outputstyles.css?v=4">
 	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Goudy+Bookletter+1911" rel="stylesheet">
 
@@ -22,33 +22,33 @@
 
 <p> The average length of a sentence is <%=@avgSentence%>. </p>
 
-<p id="userTeacher" class="hidden"> <%= @teacher%> </p>
+<p id="userTeacher" class="hidden"> <%=@teacher%> </p>
 
-<p id="userRepetition" class="hidden"> <%= @repetitionSkill%> </p>
+<p id="userRepetition" class="hidden"> <%=@repetitionSkill%> </p>
 
-<p id="userNakedThis" class="hidden"> <%= @nakedThisSkill%> </p>
+<p id="userNakedThis" class="hidden"> <%=@nakedThisSkill%> </p>
 
-<p id="userPassiveVoice" class="hidden"> <%= @passiveVoiceSkill%> </p>
+<p id="userPassiveVoice" class="hidden"> <%=@passiveVoiceSkill%> </p>
 
-<p id="userPastTense" class="hidden"> <%= @pastTenseSkill%> </p>
+<p id="userPastTense" class="hidden"> <%=@pastTenseSkill%> </p>
 
-<p id="userPresentTense" class="hidden"> <%= @presentTenseSkill%> </p>
+<p id="userPresentTense" class="hidden"> <%=@presentTenseSkill%> </p>
 
-<p id="userFirstPerson" class="hidden"> <%= @firstPersonSkill%> </p>
+<p id="userFirstPerson" class="hidden"> <%=@firstPersonSkill%> </p>
 
-<p id="userSecondPerson" class="hidden"> <%= @secondPersonSkill%> </p>
+<p id="userSecondPerson" class="hidden"> <%=@secondPersonSkill%> </p>
 
-<p id="userAdverbs" class="hidden"> <%= @adverbsSkill%> </p>
+<p id="userAdverbs" class="hidden"> <%=@adverbsSkill%> </p>
 
-<p id="userWeak" class="hidden"> <%= @weakSkill%> </p>
+<p id="userWeak" class="hidden"> <%=@weakSkill%> </p>
 
-<p id="userFiller" class="hidden"> <%= @fillerSkill%> </p>
+<p id="userFiller" class="hidden"> <%=@fillerSkill%> </p>
 
-<p id="userVagueNoun" class="hidden"> <%= @vagueNounSkill%> </p>
+<p id="userVagueNoun" class="hidden"> <%=@vagueNounSkill%> </p>
 
-<p id="userContractions" class="hidden"> <%= @contractionsSkill%> </p>
+<p id="userContractions" class="hidden"> <%=@contractionsSkill%> </p>
 
-<p id="originalUserText" class="hidden"> <%= @userText%> </p>
+<p id="originalUserText" class="hidden"> <%=@userText%> </p>
 
 <h2> Your edited essay: </h2>
 
@@ -115,10 +115,6 @@
 <p id="specialExplanationLC" class="hidden explanation" > This is Ms. L-C's <b> BIGGEST </b> pet peeve! Are you using "as" to express cause and effect? For the sake of simplicity, try "because" instead. </p>
 
 </body>
-
-<footer>
-<p> Suggestions? Email farleykc@gmail.com </p>
-</footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="/scripts/logic.js"></script>
