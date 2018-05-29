@@ -80,7 +80,7 @@ p{
 
 /* all the highlighting effects */
 
-.specialText, .specialTextLC{
+.specialText, .specialTextLC, .specialTextT{
   font-size: 20px;
   background-color: yellow;
 }

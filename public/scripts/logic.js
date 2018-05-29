@@ -4,7 +4,7 @@ var text = $('#originalUserText').html();
 // convert into sentence array & take out blank spaces
 var textArray = text.split(" ");
 var textArrayLength = textArray.length;
-var textArray = textArray.slice(2, textArrayLength-1);
+var textArray = textArray.slice(1, textArrayLength-1);
 
 // text array but without punctuation or caps
 // first as string
@@ -15,7 +15,7 @@ var cleanText = cleanText.replace(/\;/g, '');
 //convert to array & take out blank spaces
 var cleanTextArray = cleanText.split(" ");
 var cleanTextArrayLength = cleanTextArray.length;
-var cleanTextArray = cleanTextArray.slice(2, cleanTextArrayLength-1);
+var cleanTextArray = cleanTextArray.slice(1, cleanTextArrayLength-1);
 
 // getting all the ruby variables & removing white space from both ends
 var userTeacher = $('#userTeacher').html();
@@ -81,7 +81,7 @@ if (userTeacher=="tempone"){
 	var checkPastTense = 1;
 	for(i=0; i<cleanTextArray.length; i++){
 		if (cleanTextArray[i] == "truly"){
-			textArray[i] = '<span class="specialText">'+textArray[i]+'</span>';
+			textArray[i] = '<span class="specialTextT">'+textArray[i]+'</span>';
 		}
 	}
 }
@@ -702,6 +702,11 @@ $(".specialText").hover(function() {
 $(".specialTextLC").hover(function(){
 	$("#specialTitle").toggleClass("hidden");
 	$("#specialExplanationLC").toggleClass("hidden");
+});
+
+$(".specialTextT").hover(function(){
+	$("#specialTitle").toggleClass("hidden");
+	$("#specialExplanationT").toggleClass("hidden");
 });
 
 // repetition count
