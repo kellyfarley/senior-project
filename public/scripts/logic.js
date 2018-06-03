@@ -152,6 +152,9 @@ if (userTeacher=="bhen"){
 		if (cleanTextArray[i] == "very"){
 				textArray[i] = '<span class="specialText">'+textArray[i]+'</span>';
 		}
+		if (cleanTextArray[i] == "truly"){
+			textArray[i] = '<span class="specialTextT">'+textArray[i]+'</span>';
+		}
 	}
 }
 
@@ -377,7 +380,7 @@ if(checkWeak==1){
 // adverbs
 if(checkAdverbs==1){
 	for (i=0; i<cleanTextArray.length; i++) {
-		var adverbs = ["carefully", "absolutely", "happily", "quickly", "really", "finally", "seriously", "always", "badly", "exactly", "basically", "actually", "literally", "clearly", "totally", "obviously", "constantly","specifically"];
+		var adverbs = ["very", "truly", "carefully", "absolutely", "happily", "quickly", "really", "finally", "seriously", "always", "badly", "exactly", "basically", "actually", "literally", "clearly", "totally", "obviously", "constantly","specifically"];
 		for (x=0; x<adverbs.length; x++) {
 			if (cleanTextArray[i] == adverbs[x]) {
 	    		textArray[i]= '<span class="orangeText">'+textArray[i]+'</span>';
