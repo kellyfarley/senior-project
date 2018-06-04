@@ -513,151 +513,50 @@ if(checkNakedThis==1){
 	}
 }
 
-// sentences starting the same way
+// sentence structure - stuck in an infinite loop
+/*console.log(textArray);
+var sentenceArray = text.split(".");
+var sentenceArray = sentenceArray.slice(0, (sentenceArray.length-1));
+console.log(sentenceArray);
 
-// sentence length variation (FIX LATER)
-
-// highlight very long or very short sentence (FIX LATER)
-/*var sentenceArray = text.split(".");
-sentenceArray.pop();
-
-var firstWordIndexArray = [];
-		var lastWordIndexArray = [];
-
-for (i=0; i<sentenceArray.length; i++) {
-	var individualSentenceArray = sentenceArray[i];
-	var individualSentenceArray = individualSentenceArray.split(" ");
-	if (individualSentenceArray[0]==""){
-		var individualSentenceArray = individualSentenceArray.slice(1, individualSentenceArray.length);
+for(i=0; i<sentenceArray.length; i++){
+	var individualSentence = sentenceArray[i];
+	var individualSentenceArray = individualSentence.split(" ");
+	console.log(individualSentenceArray);
+	for (y=0; y<individualSentenceArray.length; y++){
+		if (individualSentenceArray[y]==""){
+			var individualSentenceArray = individualSentenceArray.slice(y, individualSentenceArray.length);
+		}
+		console.log("final" + individualSentenceArray);
 	}
-	if(individualSentenceArray.length>30){
-		var firstWord = sentenceArray[i][0];
-		for (j=0; j<cleanTextArray.length; j++){
-			if (cleanTextArray[j] == firstWord) {
-				firstWordIndexArray.push(i);
+}
+	console.log(individualSentenceArray.length);
+	if (individualSentenceArray.length > 3){
+		var index = sentenceArray.indexOf(individualSentence);
+		console.log(index);
+		var periodCounter = 0;
+		for (x=0; x<textArray.length; x++){
+			var lastChar = textArray[x].charAt(textArray[x].length - 1);
+			if (lastChar == "."){
+				var periodCounter = periodCounter + 1;
+				console.log(periodCounter);
+			}
+			var number = x;
+			var lowerBound = number + 1;
+			var upperBound = number + individualSentenceArray.length;
+			console.log(number);
+			/*console.log(number);
+			console.log(lowerBound);
+			console.log(upperBound);
+			if (periodCounter == index){
+				for (k=lowerBound; k<upperBound; k++){
+					textArray[k] = '<span class="orangeText">'+textArray[k]+'</span>';
+				}
 			}
 		}
-		var lastWord = sentenceArray[i][sentenceArray.length-1];
 	}
 }*/
-		/*var lastWord = sentenceArray[i][sentenceArray.length-1];
-		var lastWordIndexArray = [];
-		for (i=0; i<cleanTextArray.length; i++) {
-			if (cleanTextArray[i] == lastWord) {
-				lastWordIndexArray.push(i);
-			}
-		}
-		console.log(firstWordIndexArray);
-		console.log(lastWordIndexArray);
-		//if firstWordIndexArray[i] + lastWordIndexArray =
-		//var firstWordIndex = textArray[i].indexOf("sentenceArray[i][0]");
-		//textArray[i]= '<span class="purple">'+textArray[i]+'</span>';
-		var firstWord = sentenceArray[i][0];
-		var firstWordIndex = textArray.indexOf(firstWord);
-		var lastWord = sentenceArray[i][(sentenceArray.length)-1];
-		var lastWordIndex = textArray.indexOf(lastWord);
-		for (i=firstWordIndex; i<lastWordIndex; i++){
-			textArray[i]= '<span class="red">'+textArray[i]+'</span>';
-		}
-	}
-} /*
-	if (sentenceArray[i].length > 30) {
-		var firstWord = sentenceArray[i][0];
-		var firstWordIndexArray = [];
-		for (i=0; i<cleanTextArray.length; i++) {
-			if (cleanTextArray[i] == firstWord) {
-				firstWordIndexArray.push(i);
-			}
-		}
-		var lastWord = sentenceArray[i][sentenceArray.length-1];
-		var lastWordIndexArray = [];
-		for (i=0; i<cleanTextArray.length; i++) {
-			if (cleanTextArray[i] == lastWord) {
-				lastWordIndexArray.push(i);
-			}
-		}
-		console.log(firstWordIndexArray);
-		console.log(lastWordIndexArray);
-		//if firstWordIndexArray[i] + lastWordIndexArray =
-		//var firstWordIndex = textArray[i].indexOf("sentenceArray[i][0]");
-		//textArray[i]= '<span class="purple">'+textArray[i]+'</span>';
-		var firstWord = sentenceArray[i][0];
-		var firstWordIndex = textArray.indexOf(firstWord);
-		var lastWord = sentenceArray[i][(sentenceArray.length)-1];
-		var lastWordIndex = textArray.indexOf(lastWord);
-		for (i=firstWordIndex; i<lastWordIndex; i++){
-			textArray[i]= '<span class="red">'+textArray[i]+'</span>';
-		}
-	}
-}
-
-var sentenceArray = text.split(".");
-sentenceArray.pop();
-console.log(sentenceArray); */
-/*
-for (i=0; i<sentenceArray.lenth; i++){
-	//if (sentenceArray[i].length>2){
-		var firstWord = sentenceArray[i][0];
-		var firstWordIndexArray = [];
-		for (i=0; i<cleanTextArray.length; i++) {
-			if (cleanTextArray[i] == firstWord) {
-				firstWordIndexArray.push(i);
-			}
-		}
-		var lastWord = sentenceArray[i][sentenceArray.length-1];
-		var lastWordIndexArray = [];
-		for (i=0; i<cleanTextArray.length; i++) {
-			if (cleanTextArray[i] == lastWord) {
-				lastWordIndexArray.push(i);
-			}
-		}
-		console.log(firstWordIndexArray);
-		console.log(lastWordIndexArray);
-		//if firstWordIndexArray[i] + lastWordIndexArray =
-		//var firstWordIndex = textArray[i].indexOf("sentenceArray[i][0]");
-		//textArray[i]= '<span class="purple">'+textArray[i]+'</span>';
-		//var firstWord = sentenceArray[i][0];
-		//var firstWordIndex = textArray.indexOf(firstWord);
-		//var lastWord = sentenceArray[i][(sentenceArray.length)-1];
-		//var lastWordIndex = textArray.indexOf(lastWord);
-		//for (i=firstWordIndex; i<lastWordIndex; i++){
-			//textArray[i]= '<span class="red">'+textArray[i]+'</span>';	
-	}
-for(i=0; i<sentenceArray.length; i++){
-	var string = sentenceArray[i];
-	var string = string.substr(1);
-	console.log(string);
-}
-
-// try again FOR THE FOURTH TIME
-var sentenceArray = text.split(".");
-sentenceArray.pop();
-
-for(i=0; i<sentenceArray.length; i++){
-	var individualSentenceArray = sentenceArray[i];
-	var individualSentenceArray = individualSentenceArray.split(" ");
-	if (individualSentenceArray[0]==""){
-		var individualSentenceArray = individualSentenceArray.slice(1, individualSentenceArray.length);
-	}
-	var firstWord = individualSentenceArray[0];
-	var lastWord = individualSentenceArray[(individualSentenceArray.length)-1];
-	console.log(firstWord);
-	console.log(lastWord);
-	var firstWordIndex = cleanTextArray.indexOf(firstWord);
-	var lastWordIndex = cleanTextArray.indexOf(lastWord);
-	console.log(firstWordIndex);
-	console.log(lastWordIndex);
-	if (individualSentenceArray.length > 3) {
-		for(i=firstWordIndex; i<(lastWordIndex+1); i++){
-			textArray[i] = '<span class="orangeText">'+textArray[i]+'</span>';
-		}
-	}
-}
-
-else if (individualSentenceArray.length < 5) {
-	for(i=firstWordIndex; i<(lastWordIndex+1); i++){
-		textArray[i] = '<span class="orangeText">'+textArray[i]+'</span>';
-	} } */
+// sentences starting the same way??
 
 // replace html w/ marked up version
 $('#editedUserText').html(textArray.join(" "));
@@ -739,7 +638,7 @@ $(".specialTextT").hover(function(){
 	$("#specialExplanationT").toggleClass("hidden");
 });
 
-// repetition count
+// repetition - count how many times word hovered over appears in array
 $(".redText").hover(function() {
 	var count = 0;
 	var repeatedWord = $(event.target).text();
@@ -759,15 +658,3 @@ $(".redText").hover(function() {
 	$("#repetitionExplanation").toggleClass("hidden");
 	$("#repetitionTitle").toggleClass("hidden");
 });
-
-// if have time: weak phrases
-// makes a decision --> decides
-// comes to the conclusion --> concludes
-// gives the warning --> warns
-// there is/are
-// chooses to
-// decides to
-// goes so far as to say
-// throughout history (bhen)
-// in conclusion (bhen)
-// this shows

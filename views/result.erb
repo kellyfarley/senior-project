@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
-<!-- Global site tag (gtag.js) - Google Analytics -->
+	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120231926-1"></script>
 	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
-
-	  gtag('config', 'UA-120231926-1');
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'UA-120231926-1');
 	</script>
+
 <head>
 	<title> The Write Idea - Results </title>
 	<link rel="stylesheet" type="text/css" href="/styles/outputstyles.css?v=6">
 	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Goudy+Bookletter+1911" rel="stylesheet">
-
+	<link href="https://fonts.googleapis.com/css?family=Goudy+Bookletter+1911" rel="stylesheet">
 </head>
 
 <body>
+
 <h1 id="title"> THE WRITE IDEA </h1>
 <h2 id="tagline"> A style text editor </h2>
 
@@ -30,6 +30,8 @@
 <p> Your piece has <%=@sentenceCount%> sentences. </p>
 
 <p> The average length of a sentence is <%=@avgSentence%> words. </p>
+
+<!-- taking variables from controller and hiding them in erb so can be used in javascript -->
 
 <p id="userTeacher" class="hidden"> <%=@teacher%> </p>
 
@@ -62,6 +64,8 @@
 <h2> Your edited essay: </h2>
 
 <p id="editedUserText"> </p>
+
+<!-- hidden explanations -->
 
 <h2 id="explanationHeader"> EXPLANATIONS </h2>
 
